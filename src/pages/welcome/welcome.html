@@ -1,0 +1,27 @@
+<ion-content padding id="welcome" scroll="false">
+
+  
+    <!-- <img src="assets/imgs/welcome.jpg" class="logo"/> -->
+    <div class='myDiv'>
+      <h1>
+        <b>{{'WELCOME.TEXT1' | translate }}</b>
+      </h1>
+      <div>{{'WELCOME.TEXT2' | translate }}</div>
+    </div>
+    <div class='controls'>
+      <ion-label color="light" class="hints">{{'WELCOME.YOU_CAN' | translate }}</ion-label>
+      <button ion-button block class='signUpBTN' (click)="signup()">
+        <b> {{'WELCOME.BTN_SIGNUP' | translate }} </b>
+      </button>
+      <ion-label color="light" class="hints">{{'WELCOME.OR_YOU_CAN' | translate }}</ion-label>
+      <button ion-button class='signInBTN' block color="lightprimary" (click)="signin()">
+        <b>{{'WELCOME.BTN_SIGNIN' | translate }} </b>
+      </button>
+  
+      <button ion-button class='signInBTN' block color="lightprimary" (click)="enter()">
+        <b>Mock Login </b>
+      </button>
+  
+    </div>
+  
+  </ion-content>
