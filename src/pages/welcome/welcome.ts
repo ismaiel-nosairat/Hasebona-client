@@ -55,7 +55,7 @@ export class WelcomePage {
           direction: 'forward'
         });
       } else {
-        this.navCtrl.setRoot('SheetList', {}, {
+        this.navCtrl.setRoot('SheetListPage', {}, {
           animate: true,
           direction: 'forward'
         });

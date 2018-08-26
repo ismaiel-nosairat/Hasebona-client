@@ -36,16 +36,16 @@ export class LoadingPage {
   loadDataFromStorage(): any {
     this.storage.get(this.gv.GC.TOKEN).then(tokenRes => {
       if (tokenRes) {
-        this.gv.token = JSON.parse(tokenRes);
+        this.gv.token = tokenRes;
         this.storage.get(this.gv.GC.SHEET_ID).then(sheetIdRes => {
           if (sheetIdRes) {
-            this.gv.sheetId = JSON.parse(sheetIdRes);
+            this.gv.sheetId = sheetIdRes;
             //load all then -> 'report'
             this.backend.loadAll().then(r => {
               this.navCtrl.setRoot(MainPage, {}, {
                 animate: true,
                 direction: 'forward'
-              });
+              })
             })
           }
           else {
@@ -58,12 +58,13 @@ export class LoadingPage {
             })
           }
         })
-      }
+      }else{
       // no token -> 'welcome'
       this.navCtrl.setRoot('WelcomePage', {}, {
         animate: true,
         direction: 'forward'
       });
+    }
     })
   }
 }

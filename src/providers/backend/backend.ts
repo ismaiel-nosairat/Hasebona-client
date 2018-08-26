@@ -62,7 +62,7 @@ export class BackendProvider {
     return new Promise((resolve, reject) => {
       this.api.makeRequest(this.endpoints.Users_Login, loginDto).then(
         result => {
-          let output: LoginResponse = result.data as LoginResponse;
+          let output: LoginResponse = result;
           if (!output || !output.token) {
             //todo
           }

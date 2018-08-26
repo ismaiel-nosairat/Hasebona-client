@@ -17,35 +17,48 @@ export class Api {
 
 
   httpHeadersProvider() {
-    let headers: HttpHeaders;
-    headers = new HttpHeaders();
-    headers.set('Content-Type', 'application/json');
+
     if (this.gv.sheetId && this.gv.token) {
-      headers.set('token', this.gv.token);
-      headers.set('SheetId', this.gv.sheetId.toString());
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'token': this.gv.token,
+          'SheetId': this.gv.sheetId.toString()
+        })
+      }
+      return httpOptions;
     } else if (this.gv.token) {
-      headers.set('token', this.gv.token);
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'token': this.gv.token,
+        })
+      }
+      return httpOptions;
     } else {
-      headers.set('token', '');
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }
+      return httpOptions;
     }
-    let reqOpts = {
-      headers: headers
-    }
-    return reqOpts;
   }
 
-  makeRequest(endpoint: string, paylaod?: any, events?: string[]): Promise<RE> {
+  makeRequest(endpoint: string, paylaod?: any, events?: string[]): Promise<any> {
     return new Promise<RE>((resolve, reject) => {
-      this.http.post(this.serverUrl +'/'+ endpoint, paylaod, this.httpHeadersProvider())
-       // .pipe(
-       //   catchError(this.handleError)
-      //  )
+      this.http.post(this.serverUrl + endpoint, paylaod, this.httpHeadersProvider())
+        // .pipe(
+        //   catchError(this.handleError)
+        //  )
         .subscribe((res: RE) => {
           let data: RE = res;//as RE;
           if (data.code == 200) {
-            events.forEach(element => {
-              this.events.publish(element);
-            });
+            if (events) {
+              events.forEach(element => {
+                this.events.publish(element);
+              });
+            }
             resolve(data.data);
           }
           else {
@@ -79,9 +92,9 @@ export class Api {
     }
     // return an observable with a user-facing error message
     //return throwError(
-     // 'Something bad happened; please try again later.');
+    // 'Something bad happened; please try again later.');
   };
 
 
- 
+
 }
