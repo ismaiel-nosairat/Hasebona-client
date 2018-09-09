@@ -9,5 +9,6 @@ export const MainPage = 'TabsPage';
 // The initial root pages for our tabs (remove if not using tabs)
 export const Tab1Root = 'ReportPage';
 export const Tab2Root = 'MembersPage';
-export const Tab3Root = 'EntiresPage';
-export const Tab4Root = 'SettingsPage';
+export const Tab3Root = 'EntriesPage';
+export const Tab4Root = 'SheetListPage';
+//export const Tab4Root = 'SettingsPage';

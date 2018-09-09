@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ 'NEW_ENTRY.TITLE' | translate}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="newEntryForm" (ngSubmit)="submitForm(newEntryForm.value)">
+    <ion-item>
+      <ion-label floating>{{ 'NEW_ENTRY.PURCHASED_ITEM' | translate}}:</ion-label>
+      <ion-input type="text" value="" [formControl]="newEntryForm.controls['name']" [ngClass]="{'error-border':!newEntryForm.controls['name'].valid}"></ion-input>
+    </ion-item>
+    <div class="error-box" *ngIf="newEntryForm.controls['name'].hasError('required') && newEntryForm.controls['name'].touched">*
+      {{'NEW_ENTRY.ERRORS.FIELD_REQUIRED'|translate}}!</div>
+    <div class="error-box" *ngIf="newEntryForm.controls['name'].hasError('minlength') && newEntryForm.controls['name'].touched">*
+      {{'NEW_ENTRY.ERRORS.MIN_LENGTH'|translate}} 2 {{'NEW_ENTRY.ERRORS.CHARACTERS'|translate}}!</div>
+    <div class="error-box" *ngIf="newEntryForm.controls['name'].hasError('maxlength') && newEntryForm.controls['name'].touched">*
+      {{'NEW_ENTRY.ERRORS.MAX_LENGTH'|translate}} 50 {{'NEW_ENTRY.ERRORS.CHARACTERS'|translate}}!</div>
+    <ion-item>
+      <ion-label floating>{{ 'NEW_ENTRY.PRICE' | translate}}:</ion-label>
+      <ion-input type="text" value="" [formControl]="newEntryForm.controls['amount']"></ion-input>
+    </ion-item>
+    <div class="error-box" *ngIf="newEntryForm.controls['amount'].hasError('required') && newEntryForm.controls['amount'].touched">*
+      {{'NEW_ENTRY.ERRORS.FIELD_REQUIRED'|translate}}!</div>
+    <div class="error-box" *ngIf="newEntryForm.controls['amount'].hasError('pattern') && newEntryForm.controls['amount'].touched">*
+      {{'NEW_ENTRY.ERRORS.INVALID_VALUE'|translate}}!</div>
+    <br/>
+    <ion-item>
+      <ion-label>{{ 'NEW_ENTRY.DATE' | translate}}:</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" value="" [formControl]="newEntryForm.controls['date']"></ion-datetime>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label>{{ 'NEW_ENTRY.CREDITOR' | translate}}:</ion-label>
+        <ion-select [formControl]="newEntryForm.controls['creditor']" interface="popover">
+          <ion-option *ngFor="let member of gv.members" [value]="member.id">{{member.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+
+      <ion-label>{{ 'NEW_ENTRY.DEBTORS' | translate}}:</ion-label>
+      <div style="border:1px solid rgb(218, 218, 218)">
+
+        <ion-row>
+          <ion-col col-4 *ngFor="let item of ckList">
+            <div [ngClass]="item.cssClass" (click)="toggleSelecting(item)">
+            <ion-row style="padding-top: 5px;">
+                <img  [src]="item.image" class="myAvatar" style="border: 2px solid;border-color: white;">
+                <ion-icon class="checkIcon" *ngIf="item.isChecked" name="md-checkmark" color="myGreen" ></ion-icon>
+            </ion-row>
+            <ion-row>
+                <ion-label text-center class="debetorLabel">{{item.name}}</ion-label>
+            </ion-row>
+          </div>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-list>
+
+    <button type="submit" ion-button full [disabled]="!newEntryForm.valid  || !isCheckedForDebetors() " class="signInBTN">
+      {{ 'NEW_ENTRY.SUBMIT' | translate}}
+    </button>
+  </form>
+
+
+
+</ion-content>

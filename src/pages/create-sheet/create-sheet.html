@@ -1,0 +1,36 @@
+<!--
+  Generated template for the CreateSheetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{ 'CREATE.TITLE' | translate }}</ion-title>
+      </ion-navbar>
+    
+</ion-header>
+
+
+<ion-content padding id="main">
+
+    <div id="create">
+      <form [formGroup]="createForm" (ngSubmit)="submit(createForm.value)">
+        <ion-item>
+          <ion-label floating>{{ 'CREATE.SHEET_NAME' | translate }}:</ion-label>
+          <ion-input type="text" value="" [formControl]="createForm.controls['name']"></ion-input>
+        </ion-item>
+        <div class="error-box" *ngIf="createForm.controls['name'].hasError('required') && createForm.controls['name'].touched">* {{ 'CREATE.ER_NAME_REQUIRED' | translate }}!</div>
+        <div class="error-box" *ngIf="createForm.controls['name'].hasError('maxlength') && createForm.controls['name'].touched">* {{ 'CREATE.ER_NAME_LENGTH_MAX' | translate }}!</div>
+        <ion-item>
+          <ion-label floating>{{ 'CREATE.NOTES' | translate }}:</ion-label>
+          <ion-input type="text" value="" [formControl]="createForm.controls['notes']"></ion-input>
+        </ion-item>
+        <div class="error-box" *ngIf="createForm.controls['notes'].hasError('maxlength') && createForm.controls['notes'].touched">* {{ 'CREATE.ER_NOTES_LENGTH_MAX' | translate }}!</div>
+  
+        <br/>
+        <button class='myBTN' type="submit" ion-button full [disabled]="!createForm.valid">{{ 'CREATE.BTN_SUBMIT' | translate }}</button>
+      </form>
+    </div>
+  </ion-content>

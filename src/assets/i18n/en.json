@@ -5,14 +5,17 @@
     "TEXT2": "Discover some intersting things",
     "YOU_CAN": "You can start by",
     "OR_YOU_CAN": "Or you can",
-    "BTN_SIGNUP": "New Accounting Sheet",
-    "BTN_SIGNIN": "Login to a Sheet"
+    "YOU_CAN_USE_GOOGLE": "Or you can login with Google",
+    "SIGNUP": "Sign Up",
+    "SIGNIN": "Login",
+    "GOOGLE_LOGIN": "Google"
   },
   "TABS": {
     "HOME": "Home",
     "MEMBERS": "Members",
     "ENTRIES": "Entries",
-    "SETTINGS": "Settings"
+    "SETTINGS": "Settings",
+    "All_SHEETS": "All Sheets"
   },
   "HOME": {
     "TITLE": "Home",
@@ -23,35 +26,40 @@
     "TEXT": ""
   },
   "MEMBERS": {
-    "TITLE": "Members",
-    "ALERT_ADD_MEMBER": {
-      "TITLE": "New Member",
-      "MESSAGE": "Only letters or numbers, max 32 charachters",
-      "INPUTS": {
-        "NAME": "member",
-        "PLACEHOLDER": "e.g. 'Oqlaa'"
-      },
-      "BUTTONS": {
-        "TEXT": "ADD"
-      },
-      "ERRORS": {
-        "TITLE": "Must enter member name",
-        "MESSAGE": "Name cannot be empty, and cannot exceed 32 characters",
-        "TEXT": "OK"
-      }
-    },
-    "BTN_NEW_MEMBER": ""
+    "TITLE": "Members"
+  },
+  "CREATE_MEMBER": {
+    "TITLE": "New Member",
+    "NAME": "Member Name",
+    "MEMBER": "Member",
+    "USER": "User",
+    "USER_EMAIL": "Related User Email",
+    "USER_EMAIL_EXAMPLE": "e.g. ismaiel.nosairat@gmail.com",
+    "ADD_BUTTONS": "ADD",
+    "PLEASE_ENTER_NAME": "Please enter Member Name",
+    "NOTES": "You can specify a User that represents this Member",
+    "ERRORS": {
+      "MEMBER_NAME_BADINPUT": "Only letters or numbers, max 32 charachters",
+      "DUBLICATED_MEMBER": "This Member is Already Exits",
+      "NAME_IS_MANDATORY": "Must enter member name",
+      "USER_NOT_FOUND": "No User found with this email",
+      "USER_IS_ALLREADY_MEMBER": "This User is already member in the sheet"
+    }
   },
   "MEMBER_BALANCE": {
     "TITLE": "Member Balance",
-    "NAME": "Name",
+    "PURCHASES": "Purchases",
+    "CONSUMPTION": "Consumption",
+    "NUMBER": "Number",
+    "VALUE": "Value",
     "BALANCE": "Balance",
     "DELETE_MEMBER": {
       "BTN_TITLE": "Delete Member",
-      "ALET_TITLE": "Sure?",
-      "ALET_TEXT": "Are you sure you want to delete this member?",
+      "ALERT_TITLE": "Sure?",
+      "ALERT_TEXT": "Are you sure you want to delete this member?",
       "ALERT_OK": "Yes",
-      "ALERT_CANCLE": "Cancel"
+      "ALERT_CANCEL": "Cancel",
+      "CANNOT_NON_ZERO_BALANCE_MEMBER": "Can't Delete a Member who has non zero balance"
     }
   },
   "ENTRIES": {
@@ -60,6 +68,9 @@
   },
   "ENTRY_DETAILS": {
     "TITLE": "Entry Details",
+    "PURCHASED_ITEM": "Purchased Item",
+    "AMOUNT": "Amount",
+    "DATE": "Date",
     "DELETE_ENTRY": {
       "BTN_TITLE": "Delete Entry",
       "ALET_TITLE": "Sure?",
@@ -68,52 +79,93 @@
       "ALERT_CANCLE": "Cancel"
     }
   },
-
-  
-  "BACK_BUTTON_TEXT": "Back",
-  "NAME": "Name",
-  "EMAIL": "Email",
-  "USERNAME": "Username",
-  "PASSWORD": "Password",
-  "LOGIN": "Sign in",
-  "SIGNUP": "Sign up",
-  "TAB1_TITLE": "Items",
-  "TAB2_TITLE": "Search",
-  "TAB3_TITLE": "Settings",
-  "MAP_TITLE": "Map",
-  "TUTORIAL_SKIP_BUTTON": "Skip",
-  "TUTORIAL_CONTINUE_BUTTON": "Continue",
-  "TUTORIAL_SLIDE1_TITLE": "Welcome to the Ionic Super Starter",
-  "TUTORIAL_SLIDE1_DESCRIPTION": "The <b>Ionic Super Starter</b> is a fully-featured Ionic starter with many pre-built pages and best practices.",
-  "TUTORIAL_SLIDE2_TITLE": "How to use the Super Starter",
-  "TUTORIAL_SLIDE2_DESCRIPTION": "Assemble the various page types you want and remove the ones you don't. We've provided many common mobile app page layouts, like login and signup pages, tabs, and this tutorial page.",
-  "TUTORIAL_SLIDE3_TITLE": "Getting Started",
-  "TUTORIAL_SLIDE3_DESCRIPTION": "Need help? Check out the Super Starter README for a full tutorial",
-  "TUTORIAL_SLIDE4_TITLE": "Ready to Play?",
-  "WELCOME_INTRO": "The starting point for your next great Ionic app",
-  "SETTINGS_TITLE": "Settings",
-  "SETTINGS_OPTION1": "Option 1",
-  "SETTINGS_OPTION2": "Option 2",
-  "SETTINGS_OPTION3": "Option 3",
-  "SETTINGS_OPTION4": "Option 4",
-  "SETTINGS_PROFILE_BUTTON": "Edit Profile",
-  "SETTINGS_PAGE_PROFILE": "Edit Profile",
-  "WELCOME_TITLE": "Welcome",
-  "LOGIN_TITLE": "Sign in",
-  "LOGIN_ERROR": "Unable to sign in. Please check your account information and try again.",
-  "LOGIN_BUTTON": "Sign in",
-  "SIGNUP_TITLE": "Sign up",
-  "SIGNUP_ERROR": "Unable to create account. Please check your account information and try again.",
-  "SIGNUP_BUTTON": "Sign up",
-  "LIST_MASTER_TITLE": "Items",
-  "ITEM_CREATE_TITLE": "New Item",
-  "ITEM_CREATE_CHOOSE_IMAGE": "Add Image",
-  "ITEM_NAME_PLACEHOLDER": "Name",
-  "ITEM_ABOUT_PLACEHOLDER": "About",
-  "DONE_BUTTON": "Done",
-  "CANCEL_BUTTON": "Cancel",
-  "DELETE_BUTTON": "Delete",
-  "CARDS_TITLE": "Social",
-  "SEARCH_TITLE": "Search",
-  "SEARCH_PLACEHOLDER": "Search the items list, e.g. \"Donald Duck\""
+  "NEW_ENTRY": {
+    "TITLE": "New Entry",
+    "PURCHASED_ITEM": "Purchased Item",
+    "PRICE": "Price",
+    "DATE": "Date",
+    "CREDITOR": "How payed the money?",
+    "DEBTORS": "Consumers",
+    "SUBMIT": "SUBMIT",
+    "ERRORS": {
+      "FIELD_REQUIRED": "This field is required",
+      "MIN_LENGTH": "Minimum length is",
+      "MAX_LENGTH": "Maximum length is",
+      "CHARACTERS": "characters",
+      "INVALID_VALUE": "Invalid value"
+    }
+  },
+  "CREATE": {
+    "TITLE": "New Sheet",
+    "SHEET_NAME": "Sheet Name",
+    "ER_NAME_REQUIRED": "Sheet Name is requied",
+    "ER_NAME_LENGTH_MAX": "Maximum name length is 50",
+    "NOTES": "Notes",
+    "ER_NOTES_LENGTH_MAX": "Maximum Notes length is 500",
+    "BTN_SUBMIT": "Create Sheet",
+    "ERRORS": {
+      "DUPLICATED_SHEET_NAME": "Sheet Name is Duplicated, Please choose anthor name"
+    }
+  },
+  "COMMON": {
+    "LOADING": "Please wait...",
+    "PLEASE_WAIT": "Please wait...",
+    "GENERAL": "Error Contacting Server",
+    "ERROR": "Error",
+    "PULL_TO_REFRESH": "Pull to refreash",
+    "REFRESHING": "Refreashing..."
+  },
+  "SETTINGS": {
+    "TITLE": "Settings",
+    "SHEET_INFORMATION": "Sheet Information",
+    "ID": "ID",
+    "NAME": "Name",
+    "NOTES": "Notes",
+    "CREATED": "Created",
+    "OPTIONS": "OPTIONS",
+    "LOGOUT": "Log out",
+    "PERMISSIONS": "Permissions",
+    "ADD_PERMISSION": "Add Permission",
+    "BTN_LOGOUT": "Log out",
+    "DOWNLAOD_SHEET": "Download the Sheet",
+    "BTN_DOWNLAOD_SHEET": "Download",
+    "APP_LANG": "Application Language",
+    "ALERT": {
+      "BTN_TITLE": "",
+      "ALET_TITLE": "Confirmation",
+      "ALET_TEXT": "Are you Sure?",
+      "DELETE_PERMISSION_CONFERMATION": "Are you sure that you want to delete with user permission on this sheet?",
+      "ALERT_OK": "OK",
+      "ALERT_CANCLE": "Cancel",
+      "WAIT": "Please wait...",
+      "GENERAL_ERROR": "Error while deleting permission"
+    },
+    "PERMISSION_TYPE": {
+      "OWNER": "Owner",
+      "VIEW": "Read Only",
+      "FULL": "Full"
+    }
+  },
+  "ADD_PERMISSION": {
+    "TITLE": "Add Permission",
+    "NOTES": "Here you can add permission on this sheet to other users",
+    "NOTES2": "Please enter user email and permission type",
+    "USER_EMAIL": "User Email",
+    "USER_EMAIL_EXAMPLE": "ismaiel@gmail.com",
+    "PERMISSION_TYPE": "Permission Type",
+    "PERMISSION_TYPE_READ": "READ PERMISSION",
+    "PERMISSION_TYPE_READ_DESC": "Can view your sheet, but can't add or delete its data",
+    "PERMISSION_TYPE_FULL": "FULL PERMISSION",
+    "PERMISSION_TYPE_FULL_DESC": "Can do whatever with your sheet, except deleting it",
+    "ADD_PERMISSION_BTN": "ADD PERMISSION",
+    "ERRORS": {
+      "GENERAL_ERROR": "Error while adding permission",
+      "USER_NOT_FOUND": "User not found",
+      "USER_HAS_PERMISSION": "User has a permission already, if you want to change his permission, please remove his current permission, then add your desired permission",
+      "EMAIL_IS_MANDATORY": "Please enter an Email !"
+    }
+  },
+  "SHEET_LIST":{
+    "TITLE":"My Sheets"
+  }
 }

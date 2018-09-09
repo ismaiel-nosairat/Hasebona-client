@@ -49,12 +49,13 @@ export class WelcomePage {
 
   loginWithGoogleAccount(user) {
     this.backend.Users_login(user).then(res => {
-      if (this.gv.userSheets.length = 0) {
+      if (this.gv.userSheets.length == 0) {
         this.navCtrl.setRoot('CreatePage', {}, {
           animate: true,
           direction: 'forward'
         });
       } else {
+        console.log(this.gv.userSheets.length);
         this.navCtrl.setRoot('SheetListPage', {}, {
           animate: true,
           direction: 'forward'

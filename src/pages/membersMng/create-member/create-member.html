@@ -1,0 +1,84 @@
+<ion-header>
+
+
+  <ion-navbar>
+    <ion-title>{{ 'CREATE_MEMBER.TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+
+  <div padding>
+    <ion-segment [(ngModel)]="segmentValue">
+      <ion-segment-button value="member">
+        {{ 'CREATE_MEMBER.MEMBER'| translate}}
+      </ion-segment-button>
+      <ion-segment-button value="user">
+        {{ 'CREATE_MEMBER.USER'| translate}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="segmentValue">
+    <div *ngSwitchCase="'member'">
+
+      {{ 'CREATE_MEMBER.PLEASE_ENTER_NAME'| translate}}
+
+      <ion-item>
+        <ion-label floating>{{ 'CREATE_MEMBER.NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="addMemberDto.name" ></ion-input>
+      </ion-item>
+      <ion-label class="errorMsg">{{nameError}} </ion-label>
+      <br/>
+
+      <button ion-button (click)="saveMember()"  class="signInBTN">
+        {{ 'CREATE_MEMBER.ADD_BUTTONS' | translate}}
+      </button>
+    </div>
+
+
+
+    <div *ngSwitchCase="'user'">
+
+      <p>
+        {{ 'CREATE_MEMBER.NOTES'| translate}}
+      </p>
+      <div class="finderContainer">
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="userEmail" placeholder="{{ 'CREATE_MEMBER.USER_EMAIL_EXAMPLE' | translate }}" (blur)="findUser()"></ion-input>
+        </ion-item>
+
+        <div class="spinnerContainer">
+          <ion-spinner name="crescent" *ngIf="showSpinner"></ion-spinner>
+        </div>
+        <ion-row *ngIf="found">
+          <ion-col col>
+            <ion-item>
+              <ion-avatar item-start>
+                <img [src]="found.imageUrl">
+              </ion-avatar>
+              <h2>{{found.firstName}}</h2>
+              <h3>{{found.email}}</h3>
+            </ion-item>
+          </ion-col>
+          <ion-col col-2 style="padding:32px">
+            <ion-checkbox color="color2" [(ngModel)]="isSelected"></ion-checkbox>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-label class="errorMsg" *ngIf="errorMsg">{{errorMsg}} </ion-label>
+      </div>
+      <button ion-button (click)="saveUserMember()" class="signInBTN" [disabled]="!found || 3>userEmail || errorMsg || !isSelected ">
+        {{ 'CREATE_MEMBER.ADD_BUTTONS' | translate}}
+      </button>
+    </div>
+
+
+
+  </div>
+
+
+
+
+</ion-content>

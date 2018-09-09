@@ -1,0 +1,56 @@
+page-add-permission {
+    .permissionDescription{
+        margin-top: 0.7rem !important;
+        word-wrap: break-word !important;
+        font-size: 1.2rem;
+    }
+    .myBtn{
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto; 
+        opacity: 0.8;
+        background-color: color($colors,myGreen);
+        width: 80%;
+        border-radius: 15px 15px 15px 0px;
+    }
+    .myDiv{
+        background-color: white;
+        border-radius: 35px 35px 35px 0px;
+        padding-top:16px;
+        padding-right: 10px;
+        padding-left: 15px;
+        //text-align: center;
+        padding-bottom:30px;
+        word-wrap: break-word;
+        
+    }
+    #main{
+        background: #abbaab;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+     
+      }
+      
+      .myLabel{
+          margin-bottom: 0px;
+      }
+
+      ion-spinner * {
+        width: 48px;
+        height: 48px;
+        stroke: rgb(81, 130, 187);
+        fill: rgb(80, 115, 231);
+        
+      }
+
+      .spinnerContainer{
+            align-content: center;
+            //padding-top: 10%;
+            padding-left: 42%
+      }
+    
+      .errorMsg{
+        white-space: normal;
+        color: red;
+      }
+}

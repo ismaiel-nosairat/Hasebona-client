@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { GvProvider } from '../../providers/gv/gv';
+import { BackendProvider } from '../../providers/backend/backend';
+
+import { Storage } from '@ionic/storage';
+import { App } from 'ionic-angular/components/app/app';
+import { NgZone } from '@angular/core';
 
 /**
  * Generated class for the SheetListPage page.
@@ -16,11 +21,32 @@ import { GvProvider } from '../../providers/gv/gv';
 })
 export class SheetListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private gv: GvProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private gv: GvProvider, private backend: BackendProvider, private storage: Storage, private app: App, private events: Events, private zone: NgZone) {
+    console.log('Hello SheetList');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SheetListPage');
   }
 
+  newSheet() {
+    this.navCtrl.push('CreateSheetPage');
+  }
+
+  showSheet(sheetId) {
+    this.storage.set(this.gv.GC.SHEET_ID, sheetId).then(res => {
+      //this.app.getRootNav().popToRoot();
+      this.app.getRootNav().setRoot('LoadingPage');
+      if (this.navCtrl.parent) this.navCtrl.parent.select(0);
+    })
+    //    });
+    // this.backend.Sheet_View(sheetId)
+    // .then(res=>{
+    //   this.navCtrl.setRoot('LoadingPage');
+    // });
+    //this.events.publish('reload');
+    //console.log('sdfsd');
+    //this.navCtrl.parent.select(0);
+    //this.navCtrl.setRoot('TabsPage',{opentab:1});
+  }
 }

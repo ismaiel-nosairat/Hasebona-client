@@ -27,7 +27,8 @@ export class GvProvider {
 
   GC = {
     TOKEN: 'TOKEN',
-    SHEET_ID: 'sheetId'
+    SHEET_ID: 'SHEET_ID',
+    MAX_PAGE_SIZE:50
   }
 
 

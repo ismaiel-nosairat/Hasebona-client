@@ -1,0 +1,90 @@
+<!--
+  Generated template for the MemberbalancePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title> {{'MEMBER_BALANCE.TITLE' |translate }}</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="deleteMember()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding style="text-align: center;">
+  <div class="myTable">
+    <ion-item style="background-color:transparent">
+      <ion-avatar item-start>
+        <img *ngIf="member.userInfo" [src]="member.userInfo.imageUrl" class="myAvatar">
+        <img *ngIf="!member.userInfo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ2wn18dnC8OmX7Qx49epjgoHREUBHEviB10griBGemOmkYQoK5g"
+          class="myAvatar">
+      </ion-avatar>
+      <h2 style="color: white;font-size: 2.0rem;">{{member.name}}</h2>
+      <p style="color: white;" *ngIf="member.userInfo">{{member.userInfo.email}}</p>
+    </ion-item>
+
+    <ion-grid *ngIf="report" class="summary">
+      <ion-row>
+        <ion-col ></ion-col>
+        <ion-col class="infoCol">{{'MEMBER_BALANCE.NUMBER' |translate }}</ion-col>
+        <ion-col class="infoCol" >{{'MEMBER_BALANCE.VALUE' |translate }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="infoCol" align-self-center>{{'MEMBER_BALANCE.PURCHASES' |translate }}</ion-col>
+        <ion-col>{{summary.totalPurchasesNum}}</ion-col>
+        <ion-col>{{summary.totalPurchases}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="infoCol" align-self-center>{{'MEMBER_BALANCE.CONSUMPTION' |translate }}</ion-col>
+        <ion-col>{{summary.totalSalesNum}}</ion-col>
+        <ion-col> {{summary.totalSales}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="infoCol"  align-self-center>
+          <b>{{'MEMBER_BALANCE.BALANCE' |translate }}</b>
+        </ion-col>
+        <ion-col  [ngClass]="report.balanceCss">
+          <b>{{report.balance}}</b></ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  </div>
+  <div *ngIf="!loaded" id="loading"></div>
+
+  <ion-scroll scrollY="true" style="height: 69%;" *ngIf="loaded">
+    <ion-list *ngIf="report" class="myGrid">
+      <ion-item>
+        <ion-row *ngFor="let item of report.entries" (click)="entryDetails(item)">
+          <ion-col col-8>
+            <div>
+              {{ item.name }}
+            </div>
+          </ion-col>
+          <ion-col col-3>
+            <div>
+              <span [ngClass]='item.css'> {{item.amount}} </span>
+            </div>
+          </ion-col>
+          <ion-col col-1>
+            <ion-icon [name]="item.icon" [ngClass]='item.css' style="zoom:1.5" icon-end></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+
+
+  </ion-scroll>
+  <div>
+
+
+  </div>
+
+</ion-content>

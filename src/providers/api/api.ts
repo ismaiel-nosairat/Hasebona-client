@@ -5,6 +5,8 @@ import { RE, ME } from '../../models/io';
 import { Events } from 'ionic-angular';
 
 import { catchError, retry } from 'rxjs/operators';
+import { SheetListItem, ViewEntryOut, ViewSheetOut, ReportOut } from '../../models/dtos';
+import { TranslateService } from '@ngx-translate/core';
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
@@ -12,7 +14,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class Api {
   serverUrl: string = 'http://192.168.0.170:9000';
 
-  constructor(public http: HttpClient, private gv: GvProvider, public events: Events) {
+  constructor(public http: HttpClient, private gv: GvProvider, public events: Events, private translate: TranslateService) {
   }
 
 
@@ -96,5 +98,56 @@ export class Api {
   };
 
 
+  prepareSheetList(inputData: SheetListItem[]) {
+    let index = 0;
+    inputData.forEach(e => {
+      e.class = 'it' + (index % 10) + ' it'; index++;
+    });
+    console.log(1);
+    return inputData;
+  }
 
+  prepareNewEntries(inputData: ViewEntryOut[]) {
+    let index = 0;
+    inputData.forEach(e => {
+      e.creditor = this.gv.members.find(m => m.id == e.creditorId);
+      e.class = 'it' + (index % 10) + ' it'; index++;
+      e.members.forEach(i => {
+        i.index = i.amount > 0 ? 'positive' : 'negative';
+        i.absoluteAmount = i.amount >= 0 ? i.amount : -1 * i.amount;
+        i.member = this.gv.members.find(m => m.id == i.id);
+      })
+    });
+    return inputData;
+  }
+
+  prepareNewSheet(inputData: ViewSheetOut): Promise<any> {
+    return new Promise((res, rej) => {
+      this.translate.get('SETTINGS.PERMISSION_TYPE').subscribe(vals => {
+        for (let i = 0; i < inputData.permissionsList.length; i++) {
+          inputData.permissionsList[i].permissionTranslated = vals[inputData.permissionsList[i].permission];
+        }
+        res(inputData);
+      })
+    });
+  }
+
+  parseReportData(report: ReportOut) {
+    console.log('To prepare report1: ', report);
+    this.gv.report = { creditors: [], debtors: [], creditorsBalance: [], debtorsBalance: [] }
+    if (report.balances.length > 0) {
+      let index = 0;
+      report.members.forEach(m => {
+        if (report.balances[index] > 0) {
+          this.gv.report.creditors.push(m);
+          this.gv.report.creditorsBalance.push(report.balances[index]);
+        }
+        else if (report.balances[index] < 0) {
+          this.gv.report.debtors.push(m);
+          this.gv.report.debtorsBalance.push(-1 * report.balances[index]);
+        }
+        index++;
+      });
+    };
+  }
 }

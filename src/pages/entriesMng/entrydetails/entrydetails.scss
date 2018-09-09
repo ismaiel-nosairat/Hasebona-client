@@ -1,0 +1,74 @@
+page-entrydetails {
+      .myTable{
+        background-color: #0377bb;
+      }
+
+      .label{
+        margin: 0px;
+      }
+      img {
+        background: url('assets/imgs/profile.png') no-repeat;
+      }
+      
+      .myAvatar{
+        width: 58px !important;
+        height: 58px !important;
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
+      }
+      .myAvatarSmall{
+        width: 40px !important;
+        height: 40px !important;
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
+      }
+      .item-md.item-block .item-inner{
+        border-bottom: 0px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0.6rem;
+    }
+    .headerRow{
+      padding-left: 10px;   
+        color: gray;
+        background-color: white;
+        opacity: 0.9;
+        text-align: center;
+        border: 1px solid;
+        border-color: #ffffff;
+    }
+    .dataRow{
+      padding-left: 15px;
+      background-color: white;
+      opacity: 0.9;
+      text-align: center;
+      border: 1px solid;
+      border-color: #ffffff;
+    }
+
+     .summary{
+   
+         width: 90%;
+   
+     }
+     
+
+     .positive{
+      background-color: #34c734;
+      padding: 4px 12px;
+        border-radius: 20px;
+        color: white;
+        /* -webkit-box-shadow: 0 10px 6px -6px #777; */
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
+      }
+      .negative{
+        background-color:#ff5757;
+        padding: 4px 12px;
+        border-radius: 20px;
+        color: white;
+        /* -webkit-box-shadow: 0 10px 6px -6px #777; */
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
+      }
+}

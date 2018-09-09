@@ -14,4 +14,16 @@ page-report {
         }
      
     }
+    .has-refresher  .scroll-content {
+        border-top: 0 !important;
+    }
+    .reportCard{
+        opacity: 0.98;
+    }
+    .refresher-pulling-icon, .refresher-refreshing-icon{
+        color:white;
+    }
+    .refresher-refreshing .spinner-ios line, .refresher-refreshing .spinner-ios-small line, .refresher-refreshing .spinner-crescent circle {
+        stroke: rgb(255, 255, 255);
+    }
 }

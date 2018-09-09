@@ -7,47 +7,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>SheetList</ion-title>
+    <ion-title>{{'SHEET_LIST.TITLE' |translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding>
-  <b ion-item *ngIf='gv.userSheets.length=0'>
+  <b *ngIf="gv.userSheets.length==0">
     No Data
   </b>
 
-  <ion-list [ngClass]="myList">
-    <ion-item-sliding *ngFor="let item of gv.userSheets;let i = index" (click)="showSheet(item)" [id]="item.id" >
-      <ion-item >
-        <ion-row >
-          <ion-col [ngClass]="upperColumn" >
-            <h2 >{{item .name}}</h2>
-          </ion-col>
-          <ion-col [ngClass]="upperColumn">
-              <p>{{item.date}}</p>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <h1>{{item.amount}}</h1>
-          </ion-col>
-          <ion-col>
-            <h1>{{item.creditor.name}}</h1>
-          </ion-col>
-        </ion-row>
+  <ion-list class="myList">
+    <ion-item-sliding *ngFor="let item of gv.userSheets;let i = index" (click)="showSheet(item.id)" [id]="item.id">
+      <ion-item>
+        <div [ngClass]="item.class">
+          <h5>{{item.creationDate}}</h5>
+          <h1>{{item.name}}</h1>
+          <h2>{{item.notes}}</h2>
+        </div>
       </ion-item>
-
     </ion-item-sliding>
   </ion-list>
-
   <ion-fab right bottom>
-    <button (click)="newEntry()" [disabled]=" 2> gdata.sheet.permissionType" ion-fab color="secondary">
+    <button (click)="newSheet()" ion-fab color="secondary">
       <ion-icon name="add"></ion-icon>
-    </button>
-  </ion-fab>
-  <ion-fab left bottom>
-    <button (click)="scroll()" [disabled]=" 2> gdata.sheet.permissionType" ion-fab color="blade">
-      <ion-icon name="ios-arrow-down"></ion-icon>
     </button>
   </ion-fab>
 

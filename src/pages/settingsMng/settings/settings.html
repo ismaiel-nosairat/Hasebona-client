@@ -1,0 +1,108 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'SETTINGS.TITLE' |translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="gv.sheet">
+
+
+  <ion-list>
+    <h2>{{'SETTINGS.SHEET_INFORMATION' |translate}}</h2>
+    <ion-item>
+      <ion-label fixed>{{'SETTINGS.NAME' |translate}}:</ion-label>
+      <ion-input text-end type="text" [readonly]="true" value="{{gv.sheet.name}}"></ion-input>
+      <!-- {{Sheet.name}} -->
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>{{'SETTINGS.NOTES' |translate}}:</ion-label>
+      <ion-input text-end type="text" [readonly]="true" value="{{gv.sheet.notes}}"></ion-input>
+      <!-- {{Sheet.name}} -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>{{'SETTINGS.CREATED' |translate}}:</ion-label>
+      <ion-input text-end type="text" [readonly]="true" value="{{gv.sheet.creationDate}}"></ion-input>
+      <!-- {{Sheet.date}} -->
+    </ion-item>
+
+
+
+
+  </ion-list>
+
+  <h2>{{'SETTINGS.OPTIONS' |translate}}</h2>
+  <ion-list>
+    <ion-item>
+      <ion-label style="color: #999;">{{'SETTINGS.LOGOUT' |translate}}</ion-label>
+      <button class="funtions" icon-end class="addPermisisonBTN" ion-button color="secondary" (click)="logout()" icon-left item-end>
+        <ion-icon name="log-out"></ion-icon>
+        {{'SETTINGS.BTN_LOGOUT' |translate}}
+      </button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{'SETTINGS.APP_LANG' |translate}}</ion-label>
+      <ion-select interface="popover" [(ngModel)]="appLang" multiple="false" (ionChange)="onSelectChange($event)">
+        <ion-option>العربية</ion-option>
+        <ion-option>English</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+  </ion-list>
+  <ion-row>
+    <ion-col align-self-center>
+      <h2>{{'SETTINGS.PERMISSIONS' |translate}}</h2>
+    </ion-col>
+    <ion-col>
+      <button item-end ion-button  icon-end class="addPermisisonBTN" color="secondary" (click)="addPermission()" item-end icon-left>
+        <ion-icon name="add"></ion-icon>
+        {{'SETTINGS.ADD_PERMISSION' |translate}}
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <div class="permissionsContainer">
+    <ion-list class="permissionList">
+      <ion-item *ngFor="let item of gv.sheet.permissionsList;let i = index">
+        <ion-avatar item-start>
+          <img [src]="item.imageUrl">
+        </ion-avatar>
+        <h2>{{item.firstName}}</h2>
+        <h3>{{item.email}}</h3>
+        <ion-badge item-end>{{item.permissionTranslated}}</ion-badge>
+        <ion-icon name="md-close-circle" [hidden]="item.permissionType!==3" style="color:transparent" icon-left item-end></ion-icon>
+        <button ion-button round color="danger" (click)="deletePermission(item)" item-end [disabled]="item.permission=='OWNER'" class="removePermissionBtn">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+
+</ion-content>
+<!-- <ion-item>
+      Clear All Etries
+      <button ion-button color="danger" (click)="showConfirm(0)"   item-end icon-left>
+        <ion-icon name="backspace"></ion-icon>
+        Clear
+      </button>
+    </ion-item>
+    <ion-item>
+      Delete Sheet
+      <button ion-button color="danger"   (click)="showConfirm(1)" item-end icon-left>
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item> -->

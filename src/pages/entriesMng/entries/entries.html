@@ -1,0 +1,74 @@
+<!--
+  Generated template for the EntriesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> {{'ENTRIES.TITLE' | translate}}</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="openSettings()">
+          <ion-icon name="settings"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="refreshEntries($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <b ion-item *ngIf='!gv.entires'>
+    No Data
+  </b>
+
+  <ion-list [ngClass]="myList">
+    <button class="tappable" ion-item *ngFor="let item of gv.entires;let i = index" (click)="showEntry(item)" [id]="item.id">
+      <ion-item style="background: rgba(0,0,0,0);">
+        <div [ngClass]="item.class">
+          <ion-row>
+            <ion-col class="creditor" col-4>
+              <h2 style="font-size: 1.4rem;">{{item.creditor.name}}</h2>
+            </ion-col>
+            <ion-col [ngClass]="upperColumn" col-8>
+              <p style="font-size: 1.0rem">{{item.creationDate}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <h1 style="font-size: 1.4rem;">{{item.amount}}</h1>
+            </ion-col>
+            <ion-col col-8>
+              <h1 style="font-size: 1.4rem;">{{item.name}}</h1>
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </ion-item>
+    </button>
+  </ion-list>
+
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
+  <ion-fab right bottom>
+    <button (click)="newEntry()" ion-fab color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-fab left bottom style="zoom: 0.8;">
+    <button (click)="scroll()" ion-fab color="blade">
+      <ion-icon name="ios-arrow-down"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+</ion-content>

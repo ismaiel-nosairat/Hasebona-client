@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
 import { Tab1Root, Tab2Root, Tab3Root, Tab4Root } from '../';
 
@@ -20,12 +20,14 @@ export class TabsPage {
   tab3Title = " ";
   tab4Title = " ";
 
-  constructor(public navCtrl: NavController, public translateService: TranslateService) {
-    translateService.get(['HOME', 'MEMBERS', 'ENTRIES', 'SETTINGS']).subscribe(values => {
-      this.tab1Title = values['HOME'];
-      this.tab2Title = values['MEMBERS'];
-      this.tab3Title = values['ENTRIES'];
-      this.tab4Title = values['SETTINGS'];
+  seltabix:number=0;
+  constructor(public navCtrl: NavController,private navParam:NavParams, public translateService: TranslateService,private events:Events) {
+    
+    translateService.get(['TABS.HOME', 'TABS.MEMBERS', 'TABS.ENTRIES', 'TABS.SETTINGS','TABS.All_SHEETS']).subscribe(values => {
+      this.tab1Title = values['TABS.HOME'];
+      this.tab2Title = values['TABS.MEMBERS'];
+      this.tab3Title = values['TABS.ENTRIES'];
+      this.tab4Title = values['TABS.All_SHEETS'];
     });
     
   }

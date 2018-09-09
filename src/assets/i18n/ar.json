@@ -1,68 +1,171 @@
 {
-  "BACK_BUTTON_TEXT": "رجوع",
-
-  "NAME": "الاسم",
-  "EMAIL": "البريد الإلكتروني",
-  "USERNAME": "اسم المستخدم",
-  "PASSWORD": "كلمة السر",
-  "LOGIN": "تسجيل الدخول",
-  "SIGNUP": "انشاء الحساب",
-
-  "TAB1_TITLE": "عناصر",
-  "TAB2_TITLE": "بحث",
-  "TAB3_TITLE": "إعدادات",
-
-  "MAP_TITLE": "خريطة",
-
-  "TUTORIAL_SKIP_BUTTON": "تخطى",
-  "TUTORIAL_CONTINUE_BUTTON": "استمر",
-
-  "TUTORIAL_SLIDE1_TITLE": "مرحبا بكم في عدة البدء Ionic Super Starter",
-  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> عبارة عن عدة لبدء التطوير بواسطة Ionic. وهي تتميز بالعديد من الصفحات وأفضل الممارسات.",
-
-  "TUTORIAL_SLIDE2_TITLE": "كيفية استخدام Ionic Super Starter",
-  "TUTORIAL_SLIDE2_DESCRIPTION": "يمكنك تجميع أنواع الصفحات المختلفة التي ترغب بها وإزالة الباقي. وتوفر عدة البدء ​​العديد من تخطيطات الصفحات الاكثر شيوعا في التطبيقات النقالة، مثل صفحات تسجيل الدخول وانشاء الحساب، علامات التبويب، وهذه الصفحة التعليمية.",
-
-  "TUTORIAL_SLIDE3_TITLE": "كيفية الشروع",
-  "TUTORIAL_SLIDE3_DESCRIPTION": "هل تحتاج إلى مساعدة؟ يمكنك الاطلاع على README لبرنامج تعليمي كامل على Ionic Super Starter",
-
-  "TUTORIAL_SLIDE4_TITLE": "مستعد للعب؟",
-
-  "WELCOME_INTRO": "نقطة الانطلاق لتطبيق Ionic العظيم الخاص بك",
-
-  "SETTINGS_TITLE": "إعدادات",
-  "SETTINGS_OPTION1": "خيار 1",
-  "SETTINGS_OPTION2": "خيار 2",
-  "SETTINGS_OPTION3": "خيار 3",
-  "SETTINGS_OPTION4": "خيار 4",
-
-  "SETTINGS_PROFILE_BUTTON": "تعديل الملف الشخصي",
-
-  "SETTINGS_PAGE_PROFILE": "تعديل الملف الشخصي",
-
-  "WELCOME_TITLE": "مرحبا",
-
-  "LOGIN_TITLE": "تسجيل الدخول",
-  "LOGIN_ERROR": "تعذر تسجيل الدخول. يرجى التحقق من معلومات حسابك وإعادة المحاولة.",
-  "LOGIN_BUTTON": "تسجيل الدخول",
-  "SIGNUP_TITLE": "انشاء الحساب",
-  "SIGNUP_ERROR": "تعذر إنشاء الحساب. يرجى التحقق من معلومات حسابك وإعادة المحاولة.",
-  "SIGNUP_BUTTON": "انشاء الحساب",
-
-  "LIST_MASTER_TITLE": "عناصر",
-
-  "ITEM_CREATE_TITLE": "عنصر جديد",
-  "ITEM_CREATE_CHOOSE_IMAGE": "إضافة صورة",
-
-  "ITEM_NAME_PLACEHOLDER": "الاسم",
-  "ITEM_ABOUT_PLACEHOLDER": "عن",
-
-  "DONE_BUTTON": "انهاء",
-  "CANCEL_BUTTON": "الغاء",
-  "DELETE_BUTTON": "حذف",
-
-  "CARDS_TITLE": "اجتماعي",
-
-  "SEARCH_TITLE": "بحث",
-  "SEARCH_PLACEHOLDER": "ابحث في قائمة العناصر، مثل \"Donald Duck\""
+  "WELCOME": {
+    "TITLE": "أهلا بكم في تطبيق حاسبونا",
+    "TEXT1": "Hasebona",
+    "TEXT2": "دليلك الشخصي لحسابات مسيرة",
+    "YOU_CAN": "يمكنك البدأ عن طريق",
+    "OR_YOU_CAN": "أو بإمكانك",
+    "YOU_CAN_USE_GOOGLE": "أو يمكنك تسجيل الدخول باستخدام",
+    "SIGNUP": "تسجيل حساب جديد",
+    "SIGNIN": "تسجيل دخول",
+    "GOOGLE_LOGIN": "تسجيل دخول عن طريق جوجل"
+  },
+  "TABS": {
+    "HOME": "رئيسية",
+    "MEMBERS": "الأعضاء",
+    "ENTRIES": "المشتريات",
+    "SETTINGS": "الإعدادات",
+    "All_SHEETS": "أوراقي"
+  },
+  "HOME": {
+    "TITLE": "الرئيسية",
+    "PULLING_TEXT": "اسحب للتحديث",
+    "REFRESHING_TEXT": "تحديث...",
+    "CREDITORS": "الدائنون",
+    "DEBTORS": "المدينون",
+    "TEXT": ""
+  },
+  "MEMBERS": {
+    "TITLE": "الأعضاء"
+  },
+  "CREATE_MEMBER": {
+    "TITLE": "إضافة عضو",
+    "NAME": "اسم العضو",
+    "MEMBER": "العضو",
+    "USER": "مستخدم",
+    "USER_EMAIL": "البريد الالكتروني للمستخدم",
+    "USER_EMAIL_EXAMPLE": "مثال: ismaiel.nosairat@gmail.com",
+    "ADD_BUTTONS": "إضافة",
+    "PLEASE_ENTER_NAME": "أدخل اسم العضو رجاء",
+    "NOTES": "You can specify a User that represents this Member",
+    "ERRORS": {
+      "MEMBER_NAME_BADINPUT": "يمكن ادخال ارقام او احرف فقط، 32 حرف كحد أقصى",
+      "DUBLICATED_MEMBER": "هذا العضو موجود بالفعل",
+      "NAME_IS_MANDATORY": "يجب ادخال اسم العضو",
+      "USER_NOT_FOUND": "لايوجد اي مستخدم مرتبط بالبريد المدخل",
+      "USER_IS_ALLREADY_MEMBER": "هذا المستخدم موجود بالفعل ضمن الاعضاء"
+    }
+  },
+  "MEMBER_BALANCE": {
+    "TITLE": "رصيد العضو",
+    "PURCHASES": "المشتريات",
+    "CONSUMPTION": "المستهلكات",
+    "NUMBER": "رقماً",
+    "VALUE": "قيمة",
+    "BALANCE": "الرصيد",
+    "DELETE_MEMBER": {
+      "BTN_TITLE": "حذف العضو",
+      "ALERT_TITLE": "متأكد؟",
+      "ALERT_TEXT": "هل أنت متأكد من انك تريد حذف العضو",
+      "ALERT_OK": "نعم",
+      "ALERT_CANCEL": "إلغاء",
+      "CANNOT_NON_ZERO_BALANCE_MEMBER": "لا يمكنك حذف عضو يملك رصيداً لايساوي الصفر"
+    }
+  },
+  "ENTRIES": {
+    "TITLE": "المشتريات",
+    "BTN_ADD_ENTRY": "عنصر جديد"
+  },
+  "ENTRY_DETAILS": {
+    "TITLE": "تفاصيل",
+    "PURCHASED_ITEM": "العناصر المشتراة",
+    "AMOUNT": "المبلغ",
+    "DATE": "التاريخ",
+    "DELETE_ENTRY": {
+      "BTN_TITLE": "حذف العنصر",
+      "ALET_TITLE": "متأكد؟",
+      "ALET_TEXT": "هل أنت متأكد من انك تريد حذف العنصر",
+      "ALERT_OK": "نعم",
+      "ALERT_CANCLE": "إالغاء"
+    }
+  },
+  "NEW_ENTRY": {
+    "TITLE": "عنصر جديد",
+    "PURCHASED_ITEM": "اسم الغرض",
+    "PRICE": "السعر",
+    "DATE": "التاريخ",
+    "CREDITOR": "من قام بدفع الثمن؟",
+    "DEBTORS": "المستهلكون",
+    "SUBMIT": "حفظ",
+    "ERRORS": {
+      "FIELD_REQUIRED": "هذا الحقل مطلوب",
+      "MIN_LENGTH": "الحد الادنى هو",
+      "MAX_LENGTH": "الطول الاعظم هو",
+      "CHARACTERS": "محرف",
+      "INVALID_VALUE": "قيمة غير صالحة"
+    }
+  },
+  "CREATE": {
+    "TITLE": "ورقة حسابات حديدة",
+    "SHEET_NAME": "اسم الورقة",
+    "ER_NAME_REQUIRED": "اسم الورقة مطلوب",
+    "ER_NAME_LENGTH_MAX": "الطول الاقصى للاسم هو 50",
+    "NOTES": "تفاصيل",
+    "ER_NOTES_LENGTH_MAX": "الطول الاقصى للتفاصيل هو 200 ",
+    "BTN_SUBMIT": "إنشاء الورقة",
+    "ERRORS": {
+      "DUPLICATED_SHEET_NAME": "اسم الورقة مكرر، يرجى ادخال اسم آخر"
+    }
+  },
+  "COMMON": {
+    "LOADING": "تحميل..",
+    "PLEASE_WAIT": "يرجى الانتظار...",
+    "GENERAL": "خطأ أثناء التواصل مع المخدم",
+    "ERROR": "خطأ",
+    "PULL_TO_REFRESH": "اسحب للتحديث",
+    "REFRESHING": "تحديث..."
+  },
+  "SETTINGS": {
+    "TITLE": "الإعدادات",
+    "SHEET_INFORMATION": "معلومات الورقة",
+    "ID": "الرقم",
+    "NAME": "الاسم",
+    "NOTES": "التفاصيل",
+    "CREATED": "تاريخ الإنشاء",
+    "OPTIONS": "الخيارات",
+    "LOGOUT": "تسجيل خروج",
+    "PERMISSIONS": "السماحيات",
+    "ADD_PERMISSION": "إضافة سماحية",
+    "BTN_LOGOUT": "تسجيل خروج",
+    "DOWNLAOD_SHEET": "تحميل الورقة",
+    "BTN_DOWNLAOD_SHEET": "تحميل",
+    "APP_LANG": "لغة التطبيق",
+    "ALERT": {
+      "BTN_TITLE": "",
+      "ALET_TITLE": "تأكيد",
+      "ALET_TEXT": "هل أنت متأكد",
+      "DELETE_PERMISSION_CONFERMATION": "هل أنت متأكد من أنك تريد إزالة سماحية هذا المستخدم على الورقة؟",
+      "ALERT_OK": "موافق",
+      "ALERT_CANCLE": "إالغاء",
+      "WAIT": "يرجى الانتظار...",
+      "GENERAL_ERROR": "خطأ أثناء حذف السماحية"
+    },
+    "PERMISSION_TYPE": {
+      "OWNER": "المالك",
+      "VIEW": "قراءة فقط",
+      "FULL": "كاملة"
+    }
+  },
+  "ADD_PERMISSION": {
+    "TITLE": "إضافة سماحية",
+    "NOTES": "هنا يمكنك إضافة سماحية لمستخدم على هذه الورقة",
+    "NOTES2": "يرجى ادخال البريد الالكتروني للمستخدم، ونمط السماحية",
+    "USER_EMAIL": "البريد الالكتروني",
+    "USER_EMAIL_EXAMPLE": "ismaiel@gmail.com",
+    "PERMISSION_TYPE": "نمط السماحية",
+    "PERMISSION_TYPE_READ": "سماحية قراءة فقط",
+    "PERMISSION_TYPE_READ_DESC": "يستعرض محتويات الورقة،لكن لايمكنه الاضافة أو التعديل",
+    "PERMISSION_TYPE_FULL": "سماحية كاملة",
+    "PERMISSION_TYPE_FULL_DESC": "يستطيع عمل مايشاء بالورقة،عدا حذفها",
+    "ADD_PERMISSION_BTN": "إضافة السماحية",
+    "ERRORS": {
+      "GENERAL_ERROR": "خطأ أثناء إضافة السماحية",
+      "USER_NOT_FOUND": "المستخدم غير موجود",
+      "USER_HAS_PERMISSION": "المستخدم يملك سماحية حاليا على الورقة،إذا أردت تعديل السماحيةجديد",
+      "EMAIL_IS_MANDATORY": "الرجاء أدخل بريد الكتروني"
+    }
+  },
+  "SHEET_LIST":{
+    "TITLE":"أوراقي"
+  }
 }

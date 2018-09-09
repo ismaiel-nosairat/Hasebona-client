@@ -1,0 +1,87 @@
+<!--
+  Generated template for the AddPermissionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'ADD_PERMISSION.TITLE'| translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding id="main">
+
+  <p>
+    {{ 'ADD_PERMISSION.NOTES'| translate}}
+  </p>
+
+  <p>
+    {{ 'ADD_PERMISSION.NOTES2'| translate}}
+  </p>
+
+
+
+  <div class="myDiv">
+
+    <ion-label class="myLabel">
+      <b>{{ 'ADD_PERMISSION.USER_EMAIL' | translate}}:</b>
+    </ion-label>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="userEmail" placeholder="{{ 'ADD_PERMISSION.USER_EMAIL_EXAMPLE' | translate }}" (blur)="findUser()"></ion-input>
+    </ion-item>
+
+    <div class="spinnerContainer">
+    <ion-spinner  name="crescent" *ngIf="showSpinner"></ion-spinner>
+    </div>
+
+    <ion-item *ngIf="found">
+      <!-- <ion-avatar item-start>
+        <img [src]="found.imageUrl">
+      </ion-avatar>
+      <h2>{{found.firstName}}</h2>
+      <h3>{{found.email}}</h3> -->
+      <ion-item>
+        <ion-avatar item-start>
+          <img [src]="found.imageUrl">
+        </ion-avatar>
+        <h2>{{found.firstName}}</h2>
+        <h3>{{found.email}}</h3>
+      </ion-item>
+    </ion-item>
+
+    <ion-label class="errorMsg" *ngIf="errorMsg" >{{errorMsg}} </ion-label>
+
+    <br/>
+    <ion-label class="myLabel">
+      <b>{{ 'ADD_PERMISSION.PERMISSION_TYPE' | translate}}:</b>
+    </ion-label>
+    <ion-list radio-group [(ngModel)]="permissionType">
+      <ion-item>
+        <ion-label>{{ 'ADD_PERMISSION.PERMISSION_TYPE_READ' | translate}}
+          <h3 class="permissionDescription">{{ 'ADD_PERMISSION.PERMISSION_TYPE_READ_DESC' | translate}}</h3>
+        </ion-label>
+        <ion-radio checked="true" value="view"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ADD_PERMISSION.PERMISSION_TYPE_FULL' | translate}}
+          <h3 class="permissionDescription">{{ 'ADD_PERMISSION.PERMISSION_TYPE_FULL_DESC' | translate}}</h3>
+        </ion-label>
+        <ion-radio value="full"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+
+
+    <button ion-button full (click)="submit()" class="myBtn" [disabled]="errorMsg || !permissionType || !userEmail" >
+      {{ 'ADD_PERMISSION.ADD_PERMISSION_BTN' | translate}}
+    </button>
+
+  </div>
+
+  
+
+</ion-content>

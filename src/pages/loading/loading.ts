@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 import { GvProvider } from '../../providers/gv/gv';
 import { BackendProvider } from '../../providers/backend/backend';
 import { Storage } from '@ionic/storage';
@@ -21,15 +21,15 @@ import { ReportOut } from '../../models/dtos';
 export class LoadingPage {
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, private gv: GvProvider, private backend: BackendProvider, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, private gv: GvProvider, private backend: BackendProvider, private storage: Storage,private events:Events) {
 
-    
+    console.log('Hello Loading');
   }
 
   ionViewDidLoad() {
     setTimeout(() => {
       this.loadDataFromStorage();  
-    }, 5000);
+    }, 2000);
     
   }
 
@@ -42,7 +42,8 @@ export class LoadingPage {
             this.gv.sheetId = sheetIdRes;
             //load all then -> 'report'
             this.backend.loadAll().then(r => {
-              this.navCtrl.setRoot(MainPage, {}, {
+              this.events.publish('reload');
+              this.navCtrl.setRoot(MainPage, {opentab: 0}, {
                 animate: true,
                 direction: 'forward'
               })

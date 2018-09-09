@@ -1,0 +1,36 @@
+page-settings {
+    .col {
+         padding: 0px;
+    }
+    .funtions{
+        width:100px;
+    }
+    .permissionsContainer{
+        border: 1px  solid gray;
+        margin-top: 6px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .addPermisisonBTN{
+        height: 24px;
+        margin-top: -3px;
+        width: 150px;
+        opacity: 0.8;
+        background-color: color($colors,myGreen);
+        //border-radius: 15px 15px 15px 0px;
+    }
+    .removePermissionBtn{
+        height: 22px !important;
+    }
+    .permissionList{
+        margin-bottom: 0px !important;
+    }
+    h2 {
+        margin-top: 1.8rem;
+        font-size: 1.8rem;
+    }
+    .badge{
+        background-color: #0377bb;
+        opacity: 0.9;
+    }
+}

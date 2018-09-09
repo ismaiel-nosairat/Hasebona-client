@@ -26,23 +26,27 @@ export class ReportPage {
   creditorsChart: any;
   debtorsChart: any;
 
-  isThereData: boolean = false;
   isDrawing: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private gv: GvProvider, private backend: BackendProvider, private events: Events) {
-    if (gv.report.creditors.length > 0)
-      this.isThereData = true;
-
     events.subscribe('sheet:report', () => {
       this.refreshReport();
     });
   }
+  isThereData() {
+    //console.log('#####################')
+    let b: boolean = this.gv.report.creditors && this.gv.report.creditors.length > 0
+    //console.log(b);
+    //console.log(this.gv.report.creditors);
+    return b
+  }
 
   ionViewDidLoad() {
-    this.initializeCharts();
+    if (this.isThereData())
+      this.initializeCharts();
   }
 
   initializeCharts() {
-    if (this.isThereData && !this.isDrawing) {
+    if (!this.isDrawing) {
       this.isDrawing = true;
       let colorArrRGB = this.generateColorsRGBA(this.gv.report.creditorsBalance.length, 3);
       let colorArrHEX = this.generateColorsHEX(this.gv.report.creditorsBalance.length, 3);
@@ -86,45 +90,65 @@ export class ReportPage {
         }
       });
     }
-    this.isDrawing=false;
+    this.isDrawing = false;
   }
 
 
   refreshReport() {
-    
-    if (this.gv.report.creditors.length > 0 && !this.isDrawing) {
-      this.isDrawing=true;
-      let colorArrRGB = this.generateColorsRGBA(this.gv.report.creditors.length, 3);
-      let colorArrHEX = this.generateColorsHEX(this.gv.report.creditors.length, 3);
 
-      let colorArrRGB1 = this.generateColorsRGBA(this.gv.report.debtorsBalance.length, 0);
-      let colorArrHEX1 = this.generateColorsHEX(this.gv.report.debtorsBalance.length, 0);
-
-      this.creditorsChart.data.labels = this.gv.report.creditors;
-      this.creditorsChart.data.datasets.forEach((dataset) => {
-        dataset.data = this.gv.report.creditorsBalance;
-        dataset.backgroundColor = colorArrRGB,
-          dataset.hoverBackgroundColor = colorArrHEX;
-        console.log(dataset.data);
-      });
-      this.debtorsChart.data.labels = (this.gv.report.debtors);
-      console.log(this.debtorsChart.labels);
-      this.debtorsChart.data.datasets.forEach((dataset) => {
-        dataset.data = this.gv.report.debtorsBalance;
-        dataset.backgroundColor = colorArrRGB1,
-          dataset.hoverBackgroundColor = colorArrHEX1;
-        console.log(dataset.data);
-      });
-      this.creditorsChart.update();
-      this.debtorsChart.update();
-      this.isThereData = true;
-      this.isDrawing=false;
-    }
-    else {
-      this.isThereData = false;
+    if (!this.isThereData()) {
+      //no data
+      console.log('no data')
+      return;
+    } else {
+      //if (this.creditorsChart) {
+      if (this.creditorsCanvas && this.creditorsChart) {
+        // there is data and report is initialized
+        if (true) {
+          console.log('to refresh charts')
+          this.refreshCharts();
+          //this.initializeCharts();
+        }
+      } else {
+        //console.log(1);
+        //this.initializeCharts();
+        setTimeout(() => {
+          console.log('to initialize')
+          this.initializeCharts();
+        }, 1000)
+      }
     }
   }
 
+  refreshCharts() {
+    console.log(this.gv.report);
+    this.isDrawing = true;
+    let colorArrRGB = this.generateColorsRGBA(this.gv.report.creditors.length, 3);
+    let colorArrHEX = this.generateColorsHEX(this.gv.report.creditors.length, 3);
+
+    let colorArrRGB1 = this.generateColorsRGBA(this.gv.report.debtorsBalance.length, 0);
+    let colorArrHEX1 = this.generateColorsHEX(this.gv.report.debtorsBalance.length, 0);
+
+    this.creditorsChart.data.labels = this.gv.report.creditors;
+    console.log(this.creditorsChart.data.labels);
+    this.creditorsChart.data.datasets.forEach((dataset) => {
+      dataset.data = this.gv.report.creditorsBalance;
+      dataset.backgroundColor = colorArrRGB,
+        dataset.hoverBackgroundColor = colorArrHEX;
+      console.log(dataset.data);
+    });
+    this.debtorsChart.data.labels = (this.gv.report.debtors);
+    console.log(this.debtorsChart.data.labels);
+    this.debtorsChart.data.datasets.forEach((dataset) => {
+      dataset.data = this.gv.report.debtorsBalance;
+      dataset.backgroundColor = colorArrRGB1,
+        dataset.hoverBackgroundColor = colorArrHEX1;
+      console.log(dataset.data);
+    });
+    this.creditorsChart.update();
+    this.debtorsChart.update();
+    this.isDrawing = false;
+  }
   generateColorsRGBA(num, shift): any[] {
     let returnedArr: any[] = [];
     for (let i = 0; i < num; i++) {
@@ -141,6 +165,12 @@ export class ReportPage {
     return returnedArr;
   }
 
+  doRefresh(refresher) {
+    this.backend.Sheet_loadReport().then(r => {
+      this.refreshReport();
+      refresher.complete();
+    })
+  }
 
 
 }

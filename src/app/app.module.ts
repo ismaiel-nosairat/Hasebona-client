@@ -14,6 +14,7 @@ import { Api } from '../providers';
 import { MyApp } from './app.component';
 import { GvProvider } from '../providers/gv/gv';
 import { BackendProvider } from '../providers/backend/backend';
+import { GlobalErrorHandler } from './global-error-handler';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -28,7 +29,7 @@ export function provideSettings(storage: Storage) {
    * You can add new settings options at any time. Once the settings are saved,
    * these values will not overwrite the saved values (this can be done manually if desired).
    */
-  
+
 }
 
 @NgModule({
@@ -45,7 +46,10 @@ export function provideSettings(storage: Storage) {
         deps: [HttpClient]
       }
     }),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: true,
+    }
+    ),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -59,7 +63,8 @@ export function provideSettings(storage: Storage) {
     SplashScreen,
     StatusBar,
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    //{ provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
     GvProvider,
     BackendProvider
   ]
