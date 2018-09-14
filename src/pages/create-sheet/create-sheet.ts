@@ -8,6 +8,7 @@ import { ME } from '../../models/io';
 import { AddSheetIn } from '../../models/dtos';
 import { MainPage } from '..';
 import { Storage } from '@ionic/storage';
+import { StatusBar } from '@ionic-native/status-bar';
 /**
  * Generated class for the CreateSheetPage page.
  *
@@ -27,7 +28,9 @@ export class CreateSheetPage {
 
   createForm: FormGroup;
 
-  constructor(private backend: BackendProvider, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private gv: GvProvider, private fb: FormBuilder, private translate: TranslateService, private toastCtrl: ToastController) {
+  constructor(private backend: BackendProvider, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private gv: GvProvider, private fb: FormBuilder, private translate: TranslateService, private toastCtrl: ToastController, private statusBar: StatusBar) {
+    this.statusBar.overlaysWebView(true);
+    this.statusBar.backgroundColorByHexString('#0377bb');
     console.log('Hello CreateSheet');
     this.createForm = fb.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(1), Validators.maxLength(50)])],

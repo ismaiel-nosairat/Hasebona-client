@@ -4,6 +4,7 @@ import { AddMemberIn, FoundUser, PermissionItem } from '../../../models/dtos';
 import { BackendProvider } from '../../../providers/backend/backend';
 import { TranslateService } from '@ngx-translate/core';
 import { GvProvider } from '../../../providers/gv/gv';
+import { Keyboard } from '@ionic-native/keyboard';
 
 /**
  * Generated class for the CreateMemberPage page.
@@ -17,6 +18,8 @@ import { GvProvider } from '../../../providers/gv/gv';
   selector: 'page-create-member',
   templateUrl: 'create-member.html',
 })
+ declare const Keyboard: any;
+
 export class CreateMemberPage {
 
   addMemberDto: AddMemberIn = {
@@ -29,8 +32,9 @@ export class CreateMemberPage {
   nameError: string;
   segmentValue: string = "member";
   isSelected = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private backend: BackendProvider, private translate: TranslateService, private loadingCtrl: LoadingController, private gv: GvProvider) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, private backend: BackendProvider, private translate: TranslateService, private loadingCtrl: LoadingController, private gv: GvProvider, private keyboard: Keyboard) {
+    keyboard.disableScroll(true);
+    Keyboard.hideFormAccessoryBar(false);
   }
 
   ionViewDidLoad() {
@@ -50,7 +54,7 @@ export class CreateMemberPage {
                 this.translate.get('CREATE_MEMBER.ERRORS.USER_NOT_FOUND').subscribe(val => {
                   this.errorMsg = val;
                   this.found = null;
-                  this.isSelected=false;
+                  this.isSelected = false;
                   this.showSpinner = false;
                 }); break;
               }
@@ -59,7 +63,7 @@ export class CreateMemberPage {
                 this.translate.get('CREATE_MEMBER.ERRORS.USER_IS_ALLREADY_MEMBER').subscribe(val => {
                   this.errorMsg = val;
                   this.found = null;
-                  this.isSelected=false;
+                  this.isSelected = false;
                   this.showSpinner = false;
                 }); break;
               }

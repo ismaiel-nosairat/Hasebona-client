@@ -1,10 +1,14 @@
 //----------------< Users >-------------------//
 export interface Login {
-    googleId: string;
     firstName: string;
     lastName: string;
-    imageUrl?: string;
+    displayName?:string;
     email: string;
+    imageUrl?: string;
+    userId?:string; 
+    idToken?:string;
+    accessToken?:string;
+    googleId?: string;
 }
 export interface LoginResponse {
     token: string;
@@ -81,6 +85,7 @@ export interface PermissionItem {
     firstName: string;
     lastName: string;
     imageUrl?: string;
+    displayName?:string;
     email: string;
     permission?: string;
     permissionTranslated?: string;
@@ -136,6 +141,7 @@ export interface UserItem {
     lastName: string;
     imageUrl?: string;
     email: string;
+    displayName?:string;
 }
 
 

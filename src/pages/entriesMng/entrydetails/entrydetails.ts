@@ -28,8 +28,7 @@ export class EntrydetailsPage {
     private loadingCtrl: LoadingController
   ) {
     this.entry = navParams.get("entry");
-    console.log(JSON.stringify(this.entry));
-   // console.log(this.entry);
+   
   }
 
   ionViewDidLoad() {

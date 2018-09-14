@@ -8,13 +8,16 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { Keyboard } from '@ionic-native/keyboard';
 import { Items } from '../mocks/providers/items';
 import { Api } from '../providers';
 import { MyApp } from './app.component';
 import { GvProvider } from '../providers/gv/gv';
 import { BackendProvider } from '../providers/backend/backend';
 import { GlobalErrorHandler } from './global-error-handler';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { AngularFireModule } from 'angularfire2';
+import firebase from 'firebase';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -31,7 +34,15 @@ export function provideSettings(storage: Storage) {
    */
 
 }
-
+export const firebaseConfig = {
+  apiKey: "AIzaSyBZpLybtdA7TlCIOebegnn-Ft-LSUwV3lM",
+  authDomain: "hasebona-1.firebaseapp.com",
+  databaseURL: "https://hasebona-1.firebaseio.com",
+  projectId: "hasebona-1",
+  storageBucket: "hasebona-1.appspot.com",
+  messagingSenderId: "949919048306"
+}
+firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     MyApp
@@ -48,9 +59,13 @@ export function provideSettings(storage: Storage) {
     }),
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: true,
+      scrollPadding: false,
+      scrollAssist: false,
+      autoFocusAssist: false,
     }
     ),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,11 +77,13 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
+    Keyboard,
     // Keep this to enable Ionic's runtime error handling during development
-    //{ provide: ErrorHandler, useClass: IonicErrorHandler },
-    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    // { provide: ErrorHandler, useClass: GlobalErrorHandler },
     GvProvider,
-    BackendProvider
+    BackendProvider,
+    GooglePlus
   ]
 })
 export class AppModule { }

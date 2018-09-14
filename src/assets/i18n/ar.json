@@ -8,7 +8,8 @@
     "YOU_CAN_USE_GOOGLE": "أو يمكنك تسجيل الدخول باستخدام",
     "SIGNUP": "تسجيل حساب جديد",
     "SIGNIN": "تسجيل دخول",
-    "GOOGLE_LOGIN": "تسجيل دخول عن طريق جوجل"
+    "GOOGLE_LOGIN": "Google+",
+    "MOCKLOGIN": "Mock Login"
   },
   "TABS": {
     "HOME": "رئيسية",

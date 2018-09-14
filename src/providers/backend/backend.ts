@@ -14,19 +14,15 @@ import { Events } from 'ionic-angular';
 @Injectable()
 export class BackendProvider {
 
-
-
-
-  
-
   constructor(public http: HttpClient, private api: Api, private gv: GvProvider, private storage: Storage, private events: Events) {
     console.log('Hello BackendProvider Provider');
-    
+
   }
 
 
   Sheet_loadReport(withEvent?: boolean): Promise<any> {
     return new Promise((resolve, reject) => {
+
       this.api.makeRequest(this.endpoints.Sheets_report, null, null)
         .then(result => {
           let report: ReportOut = result as ReportOut;
@@ -90,7 +86,7 @@ export class BackendProvider {
           this.api.prepareNewEntries(all.entries);
           console.log('before');
           this.api.parseReportData(all.report);
-          console.log('after',this.gv.report)
+          console.log('after', this.gv.report)
           this.api.prepareNewSheet(all.sheet).then(ress => {
             this.gv.sheet = ress;
             resolve()
@@ -280,4 +276,6 @@ export class BackendProvider {
     All: '/sheet/loadAll'
 
   }
+
+
 }

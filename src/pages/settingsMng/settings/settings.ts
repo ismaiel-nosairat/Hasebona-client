@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, ToastController, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ToastController, App, Events } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { BackendProvider } from '../../../providers/backend/backend';
@@ -25,19 +25,37 @@ export class SettingsPage {
   loading: Loading;
   public appLang: string;
   testt: string;
-  constructor(private backend: BackendProvider, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private platform: Platform, private toastCtrl: ToastController, private gv: GvProvider, private translate: TranslateService,private app: App) {
-    this.appLang = "العربية"
+  constructor(private backend: BackendProvider, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private platform: Platform, private toastCtrl: ToastController, private gv: GvProvider, private translate: TranslateService, private app: App, private events: Events) {
+    console.log(this.translate.currentLang)
+    console.log(this.translate.defaultLang)
+    this.appLang = this.translate.currentLang == 'en' ? "English" : "العربية"
     console.log('Hello Settings');
+
+    events.subscribe('lang:change', () => {
+      this.translate.get('SETTINGS.PERMISSION_TYPE').subscribe(vals => {
+        for (let i = 0; i < this.gv.sheet.permissionsList.length; i++) {
+          this.gv.sheet.permissionsList[i].permissionTranslated = vals[this.gv.sheet.permissionsList[i].permission];
+        }
+      })
+    })
+
 
   }
 
   onSelectChange(selectedValue: any) {
-    this.storage.set('lang', selectedValue);
-    if (selectedValue == 'العربية') {
-      this.translate.setDefaultLang('ar');
+    if (selectedValue == 'English') {
+
+      this.translate.use('en').subscribe(res => {
+        console.log('eng')
+        this.storage.set('lang', this.translate.currentLang);
+      });
     }
     else {
-      this.translate.setDefaultLang('en');
+      console.log('arb')
+      this.translate.use('ar').subscribe(res => {
+        console.log('arb')
+        this.storage.set('lang', this.translate.currentLang);;
+      })
     }
 
 

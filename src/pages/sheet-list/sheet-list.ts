@@ -6,6 +6,7 @@ import { BackendProvider } from '../../providers/backend/backend';
 import { Storage } from '@ionic/storage';
 import { App } from 'ionic-angular/components/app/app';
 import { NgZone } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 
 /**
  * Generated class for the SheetListPage page.
@@ -21,8 +22,11 @@ import { NgZone } from '@angular/core';
 })
 export class SheetListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private gv: GvProvider, private backend: BackendProvider, private storage: Storage, private app: App, private events: Events, private zone: NgZone) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private gv: GvProvider, private backend: BackendProvider, private storage: Storage, private app: App, private events: Events, private statusBar: StatusBar) {
+
     console.log('Hello SheetList');
+    this.statusBar.overlaysWebView(true);
+    this.statusBar.backgroundColorByHexString('#0377bb');
   }
 
   ionViewDidLoad() {

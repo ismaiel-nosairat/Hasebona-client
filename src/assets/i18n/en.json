@@ -8,7 +8,8 @@
     "YOU_CAN_USE_GOOGLE": "Or you can login with Google",
     "SIGNUP": "Sign Up",
     "SIGNIN": "Login",
-    "GOOGLE_LOGIN": "Google"
+    "GOOGLE_LOGIN": "Google+",
+    "MOCKLOGIN": "Mock Login"
   },
   "TABS": {
     "HOME": "Home",

@@ -5,6 +5,7 @@ import { BackendProvider } from '../../providers/backend/backend';
 import { Storage } from '@ionic/storage';
 import { MainPage } from '..';
 import { ReportOut } from '../../models/dtos';
+import { StatusBar } from '@ionic-native/status-bar';
 
 /**
  * Generated class for the LoadingPage page.
@@ -21,9 +22,10 @@ import { ReportOut } from '../../models/dtos';
 export class LoadingPage {
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, private gv: GvProvider, private backend: BackendProvider, private storage: Storage,private events:Events) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, private gv: GvProvider, private backend: BackendProvider, private storage: Storage,private events:Events, private statusBar: StatusBar) {
     console.log('Hello Loading');
+    this.statusBar.overlaysWebView(true);
+    this.statusBar.backgroundColorByHexString('#0377bb');
   }
 
   ionViewDidLoad() {

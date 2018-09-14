@@ -9,13 +9,10 @@
       <div>{{'WELCOME.TEXT2' | translate }}</div>
     </div>
     <div class='controls'>
-      <ion-label color="light" class="hints">{{'WELCOME.YOU_CAN' | translate }}</ion-label>
-      <button ion-button block class='signUpBTN' (click)="signup()">
-        <b> {{'WELCOME.BTN_SIGNUP' | translate }} </b>
-      </button>
+     
       <ion-label color="light" class="hints">{{'WELCOME.OR_YOU_CAN' | translate }}</ion-label>
-      <button ion-button class='signInBTN' block color="lightprimary" (click)="signin()">
-        <b>{{'WELCOME.BTN_SIGNIN' | translate }} </b>
+      <button ion-button class='signInBTN' block color="lightprimary" (click)="googleLogin()">
+        <b>{{'WELCOME.GOOGLE_LOGIN' | translate }} </b>
       </button>
   
       <button ion-button class='signInBTN' block color="lightprimary" (click)="enter()">
