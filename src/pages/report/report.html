@@ -11,15 +11,9 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content  padding style="background-color:#0377bb">
-  <ion-refresher  no-border (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content></ion-refresher-content>
-    <!-- <ion-refresher-content 
-      pullingIcon="arrow-dropdown"
-      pullingText=" {{'COMMON.PULL_TO_REFRESH' | translate}}"
-      refreshingSpinner="circles"
-      refreshingText= "{{'COMMON.REFRESHING' | translate}}">
-    </ion-refresher-content> -->
+<ion-content padding class="contentClass" >
+  <ion-refresher no-border (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
   <ion-card *ngIf='isThereData()' class="reportCard">
@@ -39,5 +33,30 @@
       <canvas #debtorsCanvas></canvas>
     </ion-card-content>
   </ion-card>
+
+  
+  <div *ngIf='! isThereData()' class="info">
+    <label class="headerLabel">
+      {{'HOME.TEXT1' | translate}}
+    </label>
+    <ion-row class="row1">
+      <label class="intoLabel">
+        {{'HOME.TEXT2' | translate}}
+      </label>
+      <button ion-button (click)="newMember()" class="addButton">
+        {{'HOME.NEW_MEMBER' | translate}}
+      </button>
+    </ion-row>
+    <ion-row class="row2">
+      <label class="intoLabel">
+        {{'HOME.TEXT3' | translate}}
+      </label>
+      <button ion-button (click)="newEntry()" class="addButton">
+        {{'HOME.NEW_ENTRY' | translate}}
+      </button>
+    </ion-row>
+
+  </div>
+
 
 </ion-content>

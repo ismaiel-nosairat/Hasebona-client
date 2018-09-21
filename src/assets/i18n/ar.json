@@ -1,15 +1,9 @@
 {
   "WELCOME": {
-    "TITLE": "أهلا بكم في تطبيق حاسبونا",
-    "TEXT1": "Hasebona",
-    "TEXT2": "دليلك الشخصي لحسابات مسيرة",
-    "YOU_CAN": "يمكنك البدأ عن طريق",
-    "OR_YOU_CAN": "أو بإمكانك",
-    "YOU_CAN_USE_GOOGLE": "أو يمكنك تسجيل الدخول باستخدام",
-    "SIGNUP": "تسجيل حساب جديد",
-    "SIGNIN": "تسجيل دخول",
-    "GOOGLE_LOGIN": "Google+",
-    "MOCKLOGIN": "Mock Login"
+    "TEXT1": "حسابات سهلة ذكية وآمنة للجميع",
+    "TEXT2": "استخدم حسابك في جوجل للتسجيل ",
+    "TEXT3": "باستخدامك للتطبيق،فأنت توافق على سياسة الخصوصية للتطبيق",
+    "SIGNIN": "بدأ الاستخدام"
   },
   "TABS": {
     "HOME": "رئيسية",
@@ -24,7 +18,12 @@
     "REFRESHING_TEXT": "تحديث...",
     "CREDITORS": "الدائنون",
     "DEBTORS": "المدينون",
-    "TEXT": ""
+    "TEXT1": "هنا يمكنك مشاهدة تقرير كامل عن أرصدة أعضاء ورقة الحسابات",
+    "TEXT2": "يمكنك البدأ بإضافة أعضاء جدد",
+    "TEXT3": "ثم يمكنك إضافة مشترياتك",
+    "NEW_MEMBER": "إضافة عضو",
+    "NEW_ENTRY": "مشتريات جديدة",
+    "MEMBER_FIRST": "يرجى إدخال عضو على الأقل أولا"
   },
   "MEMBERS": {
     "TITLE": "الأعضاء"
@@ -32,13 +31,13 @@
   "CREATE_MEMBER": {
     "TITLE": "إضافة عضو",
     "NAME": "اسم العضو",
-    "MEMBER": "العضو",
+    "MEMBER": "عضو",
     "USER": "مستخدم",
     "USER_EMAIL": "البريد الالكتروني للمستخدم",
     "USER_EMAIL_EXAMPLE": "مثال: ismaiel.nosairat@gmail.com",
     "ADD_BUTTONS": "إضافة",
     "PLEASE_ENTER_NAME": "أدخل اسم العضو رجاء",
-    "NOTES": "You can specify a User that represents this Member",
+    "NOTES": "في حال كان العضو مستخدما لتطبيق حاسبونا، قم بإدخال بريده  ",
     "ERRORS": {
       "MEMBER_NAME_BADINPUT": "يمكن ادخال ارقام او احرف فقط، 32 حرف كحد أقصى",
       "DUBLICATED_MEMBER": "هذا العضو موجود بالفعل",
@@ -77,7 +76,7 @@
       "ALET_TITLE": "متأكد؟",
       "ALET_TEXT": "هل أنت متأكد من انك تريد حذف العنصر",
       "ALERT_OK": "نعم",
-      "ALERT_CANCLE": "إالغاء"
+      "ALERT_CANCLE": "إلغاء"
     }
   },
   "NEW_ENTRY": {
@@ -93,7 +92,8 @@
       "MIN_LENGTH": "الحد الادنى هو",
       "MAX_LENGTH": "الطول الاعظم هو",
       "CHARACTERS": "محرف",
-      "INVALID_VALUE": "قيمة غير صالحة"
+      "INVALID_VALUE": "قيمة غير صالحة",
+      "CREDITOR_IS_DEBETOR": "يجب أن تختار شخصا آخر أيضاَ"
     }
   },
   "CREATE": {
@@ -137,7 +137,7 @@
       "ALET_TEXT": "هل أنت متأكد",
       "DELETE_PERMISSION_CONFERMATION": "هل أنت متأكد من أنك تريد إزالة سماحية هذا المستخدم على الورقة؟",
       "ALERT_OK": "موافق",
-      "ALERT_CANCLE": "إالغاء",
+      "ALERT_CANCLE": "إلغاء",
       "WAIT": "يرجى الانتظار...",
       "GENERAL_ERROR": "خطأ أثناء حذف السماحية"
     },
@@ -166,7 +166,12 @@
       "EMAIL_IS_MANDATORY": "الرجاء أدخل بريد الكتروني"
     }
   },
-  "SHEET_LIST":{
-    "TITLE":"أوراقي"
+  "SHEET_LIST": {
+    "TITLE": "أوراقي"
+  },
+  "OFFLINE": {
+    "MESSAGE": "لايوجد اتصال بالانترنت، يرجى المحاولة مجدداً",
+    "REFRESH": "تحديث",
+    "REFRESHING": "تحديث..."
   }
 }

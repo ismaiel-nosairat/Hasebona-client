@@ -30,10 +30,11 @@
       </ion-item>
       <ion-label class="errorMsg">{{nameError}} </ion-label>
       <br/>
-
+      <div text-center>
       <button ion-button (click)="saveMember()"  class="signInBTN">
         {{ 'CREATE_MEMBER.ADD_BUTTONS' | translate}}
       </button>
+      </div>
     </div>
 
 
@@ -52,7 +53,7 @@
           <ion-spinner name="crescent" *ngIf="showSpinner"></ion-spinner>
         </div>
         <ion-row *ngIf="found">
-          <ion-col col>
+          <ion-col col (click)="toggleIsSelected()">
             <ion-item>
               <ion-avatar item-start>
                 <img [src]="found.imageUrl">
@@ -69,9 +70,12 @@
 
         <ion-label class="errorMsg" *ngIf="errorMsg">{{errorMsg}} </ion-label>
       </div>
-      <button ion-button (click)="saveUserMember()" class="signInBTN" [disabled]="!found || 3>userEmail || errorMsg || !isSelected ">
-        {{ 'CREATE_MEMBER.ADD_BUTTONS' | translate}}
-      </button>
+      <div text-center>
+        <button ion-button (click)="saveUserMember()" class="signInBTN" [disabled]="!found || 3>userEmail || errorMsg || !isSelected ">
+          {{ 'CREATE_MEMBER.ADD_BUTTONS' | translate}}
+        </button>
+      </div>
+      
     </div>
 
 

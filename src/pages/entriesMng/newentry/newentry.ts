@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage, Events } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, Events, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { BackendProvider } from '../../../providers/backend/backend';
 import { AlertController, LoadingController, Loading } from 'ionic-angular';
@@ -26,17 +26,19 @@ export class NewentryPage {
     private gv: GvProvider,
     private loadingCtrl: LoadingController,
     private translate: TranslateService,
-    private events:Events
+    private events: Events,
+    private toastCtrl: ToastController
   ) {
 
     this.ckList = [];
     this.initCkList();
-    events.subscribe('member:list',()=>{
+    events.subscribe('member:list', () => {
       this.initCkList();
     })
-    events.subscribe('member:add',()=>{
+    events.subscribe('member:add', () => {
       this.initCkList();
     })
+   
     var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
     var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
 
@@ -99,23 +101,37 @@ export class NewentryPage {
 
 
   submitForm(x: any): void {
-    this.showLoading();
-    let members = [];
-    this.ckList.forEach(c => {
-      if (c.isChecked) {
-        members.push(c.id);
+
+    if (!this.isValidEntry(x.creditor)) {
+      this.translate.get('NEW_ENTRY.ERRORS.CREDITOR_IS_DEBETOR')
+        .subscribe(vals => {
+          let toast = this.toastCtrl.create({
+            position: 'bottom',
+            duration: 2000,
+            message: vals
+          });
+          toast.present();
+        });
+    } else {
+
+      this.showLoading();
+      let members = [];
+      this.ckList.forEach(c => {
+        if (c.isChecked) {
+          members.push(c.id);
+        }
+      });
+      let input: AddEntryIn = {
+        name: x.name,
+        amount: x.amount,
+        creditorId: x.creditor,
+        creationDate: x.date,
+        members: members
       }
-    });
-    let input: AddEntryIn = {
-      name:x.name,
-      amount: x.amount,
-      creditorId: x.creditor,
-      creationDate: x.date,
-      members: members
+      this.backend.Entries_add(input).then(res => {
+        this.navCtrl.pop();
+      });
     }
-    this.backend.Entries_add(input).then(res => {
-      this.navCtrl.pop();
-    });
   }
 
 
@@ -133,7 +149,13 @@ export class NewentryPage {
 
 
 
+  isValidEntry(creditorId) {
+    let cks = this.ckList.filter(c => c.isChecked == true);
+    if (cks && cks.length == 1 && cks[0].id == creditorId) {
+      return false;
+    } else return true;
 
+  }
 
 
 

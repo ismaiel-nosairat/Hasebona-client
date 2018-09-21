@@ -9,10 +9,14 @@ page-create-member {
       }
       .signInBTN{
         margin-top: 10px;
-        margin-left: 26%;
+        //margin-left: 26%;
         opacity: 0.8;
         background-color: color($colors,myGreen);
         width: 47%;
         border-radius: 15px 15px 15px 0px;
     }
+    img {
+        background: url('../assets/imgs/profile.png') no-repeat;
+        background-size: cover;
+      }
 }

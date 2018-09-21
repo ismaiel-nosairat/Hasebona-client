@@ -31,6 +31,7 @@ export class SettingsPage {
     this.appLang = this.translate.currentLang == 'en' ? "English" : "العربية"
     console.log('Hello Settings');
 
+    
     events.subscribe('lang:change', () => {
       this.translate.get('SETTINGS.PERMISSION_TYPE').subscribe(vals => {
         for (let i = 0; i < this.gv.sheet.permissionsList.length; i++) {

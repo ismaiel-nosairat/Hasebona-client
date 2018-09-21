@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Loading, LoadingController, AlertController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Loading, LoadingController, AlertController, ToastController, Events } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BackendProvider } from '../../providers/backend/backend';
 import { TranslateService } from '@ngx-translate/core';
@@ -28,22 +28,22 @@ export class CreateSheetPage {
 
   createForm: FormGroup;
 
-  constructor(private backend: BackendProvider, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private gv: GvProvider, private fb: FormBuilder, private translate: TranslateService, private toastCtrl: ToastController, private statusBar: StatusBar) {
-    this.statusBar.overlaysWebView(true);
-    this.statusBar.backgroundColorByHexString('#0377bb');
+  constructor(private backend: BackendProvider, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private gv: GvProvider, private fb: FormBuilder, private translate: TranslateService, private toastCtrl: ToastController, private statusBar: StatusBar, private events: Events) {
+    // this.statusBar.overlaysWebView(true);
+    this.statusBar.backgroundColorByHexString('#1c8adb');
     console.log('Hello CreateSheet');
     this.createForm = fb.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(1), Validators.maxLength(50)])],
       'notes': ['', Validators.compose([Validators.required, Validators.maxLength(500)])]
     });
-  }
 
+  }
 
   ionViewDidLoad() {
 
   }
   showLoading() {
-    this.translate.get('COMMOM.LOADING').subscribe(val => {
+    this.translate.get('COMMON.LOADING').subscribe(val => {
       this.loading = this.loadingCtrl.create({
         content: val,
         dismissOnPageChange: true

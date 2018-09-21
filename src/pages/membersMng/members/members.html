@@ -8,6 +8,11 @@
 
   <ion-navbar>
     <ion-title>{{ 'MEMBERS.TITLE' | translate }}</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="openSettings()">
+          <ion-icon name="settings"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -32,7 +37,7 @@
     </div>
   </ion-list>
   <ion-fab right bottom>
-    <button (click)="addMember()" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
+    <button (click)="addMember()" ion-fab color="special" [disabled]="!gv.hasFullPermission()" ><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
 </ion-content>

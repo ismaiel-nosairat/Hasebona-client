@@ -1,24 +1,46 @@
 <ion-content padding id="welcome" scroll="false">
 
-  
-    <!-- <img src="assets/imgs/welcome.jpg" class="logo"/> -->
-    <div class='myDiv'>
-      <h1>
-        <b>{{'WELCOME.TEXT1' | translate }}</b>
-      </h1>
-      <div>{{'WELCOME.TEXT2' | translate }}</div>
-    </div>
-    <div class='controls'>
-     
-      <ion-label color="light" class="hints">{{'WELCOME.OR_YOU_CAN' | translate }}</ion-label>
+  <ion-row class="row1">
+
+  </ion-row>
+  <ion-row class="row2">
+    <img src="../assets/imgs/loho1.png" />
+  </ion-row>
+  <ion-row class="row3">
+    <label class="body">
+      {{'WELCOME.TEXT1' | translate }}
+    </label>
+  </ion-row>
+  <ion-row class="row4">
+    <label class="helper">
+      {{'WELCOME.TEXT2' | translate }}
+    </label>
+    <button ion-button class='signInBTN' block color="lightprimary" (click)="enter()">
+      <b>{{'WELCOME.SIGNIN' | translate }} </b>
+    </button>
+
+  </ion-row>
+  <ion-row class="row5" text-center>
+    <label class="footer">
+      {{'WELCOME.TEXT3' | translate }}
+    </label>
+  </ion-row>
+
+
+  <!-- <div class='myDiv'>
+    
+
+
+  </div>
+  <div class='controls'>
+
+     <ion-label color="light" class="hints">{{'WELCOME.OR_YOU_CAN' | translate }}</ion-label>
       <button ion-button class='signInBTN' block color="lightprimary" (click)="googleLogin()">
         <b>{{'WELCOME.GOOGLE_LOGIN' | translate }} </b>
       </button>
-  
-      <button ion-button class='signInBTN' block color="lightprimary" (click)="enter()">
-        <b>Mock Login </b>
-      </button>
-  
-    </div>
-  
-  </ion-content>
+   -->
+
+
+  <!-- </div> -->
+
+</ion-content>

@@ -31,6 +31,7 @@
     "@ngx-translate/http-loader": "^2.0.0",
     "angularfire2": "^5.0.1",
     "chart.js": "^2.7.2",
+    "circular-json": "^0.5.5",
     "cordova-android": "~7.0.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-googleplus": "^5.3.1",
@@ -48,7 +49,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.2.0",
+    "@ionic/app-scripts": "^3.2.0",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project",

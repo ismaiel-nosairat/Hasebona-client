@@ -1,0 +1,5 @@
+disable add Entry if the creditor is the only consumer
+refuse to add entry till add at least one member.
+loading upod google login
+
+add permission when add member

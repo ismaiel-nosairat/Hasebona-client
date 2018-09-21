@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title> {{'MEMBER_BALANCE.TITLE' |translate }}</ion-title>
     <ion-buttons end>
-        <button ion-button icon-only (click)="deleteMember()">
+        <button ion-button icon-only (click)="deleteMember()" [disabled]="!gv.hasFullPermission()" >
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-buttons>
@@ -64,7 +64,7 @@
       <ion-item>
         <ion-row *ngFor="let item of report.entries" (click)="entryDetails(item)">
           <ion-col col-8>
-            <div>
+            <div class="rowName" >
               {{ item.name }}
             </div>
           </ion-col>

@@ -60,7 +60,7 @@
   </ion-infinite-scroll> -->
 
   <ion-fab right bottom>
-    <button (click)="newEntry()" ion-fab color="secondary">
+    <button (click)="newEntry()" ion-fab color="special" [disabled]="!gv.hasFullPermission()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

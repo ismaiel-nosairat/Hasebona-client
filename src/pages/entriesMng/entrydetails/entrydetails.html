@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>{{'ENTRY_DETAILS.TITLE' | translate}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="deleteEntry()" color="danger">
+      <button ion-button icon-only (click)="deleteEntry()" [disabled]="!gv.hasFullPermission()">
         <ion-icon name="trash" style="zoom:1.3"></ion-icon>
       </button>
     </ion-buttons>
@@ -19,7 +19,7 @@
 
 
 <ion-content no-padding >
-  <div class="myTable">
+  <div class="myTable" >
     <ion-row>
       <ion-item style="background-color:transparent">
         <ion-avatar item-start>
@@ -48,13 +48,9 @@
         {{'ENTRY_DETAILS.DATE' | translate}}
       </ion-row>
       <ion-row class="dataRow" style="border-radius: 0px 0px 15px 15px">
-        <h5 class="info">{{entry.creationDate}}</h5>
+        <h5 class="infoSmall">{{entry.creationDate}}</h5>
       </ion-row>
     </ion-grid>
-
-
-
-
 
   </div>
   <ion-scroll scrollY="true" style="height: 53%;">

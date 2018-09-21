@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { BackendProvider } from '../../../providers/backend/backend';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
@@ -25,10 +25,10 @@ export class EntrydetailsPage {
   loading: Loading;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public backend: BackendProvider, private alertCtrl: AlertController, public gv: GvProvider, private translate: TranslateService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController, private events: Events
   ) {
     this.entry = navParams.get("entry");
-   
+
   }
 
   ionViewDidLoad() {
@@ -75,11 +75,14 @@ export class EntrydetailsPage {
     return this.gv.members.find(m => m.id == memId).name;
   }
   showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
-      dismissOnPageChange: true
-    });
-    this.loading.present();
+    this.translate.get('COMMON.LOADING').subscribe(val => {
+      this.loading = this.loadingCtrl.create({
+        content: val,
+        dismissOnPageChange: true
+      });
+      this.loading.present();
+    })
+
   }
 
 

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ViewSheetOut, ListMemberItem, ListEntriesOutItem, ViewEntryOut, SheetListItem } from '../../models/dtos';
+import { ViewSheetOut, ListMemberItem, ListEntriesOutItem, ViewEntryOut, SheetListItem, PermissionType } from '../../models/dtos';
 
 /*
   Generated class for the GvProvider provider.
@@ -24,13 +24,19 @@ export class GvProvider {
     debtorsBalance: any[]
   };
   userSheets: SheetListItem[];
-
+  userEmail: string;
   GC = {
     TOKEN: 'TOKEN',
     SHEET_ID: 'SHEET_ID',
-    MAX_PAGE_SIZE:50
+    MAX_PAGE_SIZE: 50,
+    USER_EMAIL: 'USER_EMAIL'
   }
 
+  hasFullPermission(): boolean {
+    let currentUser = this.sheet.permissionsList.find(p => p.email == this.userEmail);
+    let b: boolean = (currentUser.permission == PermissionType[PermissionType.FULL] || currentUser.permission == PermissionType[PermissionType.OWNER]);
+    return b;
+  }
 
 
   globalColorsRGBA = [
@@ -63,5 +69,12 @@ export class GvProvider {
 
     console.log('Hello GvProvider Provider');
   }
-
+  EVENTS = {
+    TO_LOGOUT: 'TO_LOGOUT',
+    LOGOUT: 'LOGOUT',
+    TO_REFRESH_SHEET_LIST: 'TO_REFRESH_SHEET_LIST',
+    GO_TO_SHEET_LIST: 'GO_TO_SHEET_LIST',
+    GO_OFFLINE: 'GO_OFFLINE',
+    FORCE_OFFLINE: 'FORCE_OFFLINE'
+  }
 }

@@ -23,8 +23,8 @@ export class TabsPage {
 
   seltabix: number = 0;
   constructor(public navCtrl: NavController, private navParam: NavParams, public translateService: TranslateService, private events: Events,private statusBar: StatusBar) {
-    this.statusBar.overlaysWebView(true);
-    this.statusBar.backgroundColorByHexString('#0377bb');
+    // this.statusBar.overlaysWebView(true);
+    this.statusBar.backgroundColorByHexString('#1c8adb');
 
     translateService.get(['TABS.HOME', 'TABS.MEMBERS', 'TABS.ENTRIES', 'TABS.SETTINGS', 'TABS.All_SHEETS']).subscribe(values => {
       this.tab1Title = values['TABS.HOME'];

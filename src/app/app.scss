@@ -15,7 +15,11 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 //.scroll-content { padding-bottom: 0!important;}
-.scroll-content { padding-bottom: 0!important; }
-.col {
-    position : initial !important;
-}
+// .scroll-content { padding-bottom: 0!important; }
+// .col {
+//     position : initial !important;
+// }
+img {
+    background: url('../assets/imgs/profile.png') no-repeat;
+    background-size: cover;
+  }

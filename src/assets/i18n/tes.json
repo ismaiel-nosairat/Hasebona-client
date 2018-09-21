@@ -1,0 +1,17 @@
+// no connection
+{
+    "headers": {
+        "normalizedNames": {},
+        "lazyUpdate": null,
+        "headers": {}
+    },
+    "status": 0,
+    "statusText": "Unknown Error",
+    "url": null,
+    "ok": false,
+    "name": "HttpErrorResponse",
+    "message": "Http failure response for (unknown url): 0 Unknown Error",
+    "error": {
+        "isTrusted": true
+    }
+}

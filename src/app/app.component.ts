@@ -29,6 +29,7 @@ import { Storage } from '@ionic/storage';
   // <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 //declare var Keyboard;
+
 export class MyApp {
   rootPage = FirstRunPage;
 
@@ -40,15 +41,10 @@ export class MyApp {
 
   constructor(private translate: TranslateService, platform: Platform, private events: Events, private statusBar: StatusBar, private splashScreen: SplashScreen, private storage: Storage) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      //this.statusBar.styleDefault();
+      
+      this.registerEvents();
+
       this.splashScreen.hide();
-      window.addEventListener("keyboardDidShow", () => {
-        document.activeElement.scrollIntoView(false);
-      });
-      // this.translate.addLangs(['ar']);
-      // console.log(this.translate.getLangs());
       this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
         console.log('lan changed', event.lang);
 
@@ -104,5 +100,22 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  registerEvents() {
+    this.events.subscribe('GO_OFFLINE', () => {
+      console.log('Must Go Offline')
+      this.nav.push('OfflinePage')
+    })
+
+    this.events.subscribe('LOGOUT', () => {
+      this.nav.push('WelcomePage')
+    })
+
+    this.events.subscribe('SHEET_LIST', () => {
+      this.nav.push('SheetListPage')
+    })
+
+
   }
 }

@@ -7,6 +7,11 @@ page-loading {
       margin-bottom: 40px;
     }
 
+    .contentClass{
+      background-color:color($colors,special);;
+       color: #fff; 
+       text-align:center;
+    }
   
   #loading {
     display: inline-block;

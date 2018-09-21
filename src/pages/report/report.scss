@@ -14,6 +14,9 @@ page-report {
         }
      
     }
+    .contentClass{
+        background-color:color($colors,special);
+    }
     .has-refresher  .scroll-content {
         border-top: 0 !important;
     }
@@ -25,5 +28,34 @@ page-report {
     }
     .refresher-refreshing .spinner-ios line, .refresher-refreshing .spinner-ios-small line, .refresher-refreshing .spinner-crescent circle {
         stroke: rgb(255, 255, 255);
+    }
+
+    .headerLabel{
+        font-size: 20px;
+        color: white;
+    }
+    .row1{
+        margin-top:30px;
+    }
+    .row2{
+        margin-top:30px;
+    }
+    .info{
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .intoLabel{
+        font-size: 15px;
+        color: white;
+    }
+    .addButton{
+        margin-left: auto;
+        margin-right: auto; 
+        opacity: 0.9;
+        background-color: color($colors,myGreen);
+        width: 80%;
+        margin-top: 10px;
+        border-radius: 15px 15px 15px 0px;
     }
 }

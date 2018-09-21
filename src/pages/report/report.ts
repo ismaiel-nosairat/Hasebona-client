@@ -1,8 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, ToastController } from 'ionic-angular';
 import { GvProvider } from '../../providers/gv/gv';
 import { BackendProvider } from '../../providers/backend/backend';
 import { Chart } from 'chart.js';
+import { TranslateService } from '@ngx-translate/core';
+import { ME, ManagedError } from '../../models/io';
+
 
 /**
  * Generated class for the ReportPage page.
@@ -27,11 +30,14 @@ export class ReportPage {
   debtorsChart: any;
 
   isDrawing: boolean = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private gv: GvProvider, private backend: BackendProvider, private events: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private gv: GvProvider, private backend: BackendProvider, private events: Events, private translate: TranslateService, private toastCtrl: ToastController) {
+    console.log('Hello Report');
     events.subscribe('sheet:report', () => {
       this.refreshReport();
     });
+
   }
+
   isThereData() {
     //console.log('#####################')
     let b: boolean = this.gv.report.creditors && this.gv.report.creditors.length > 0
@@ -115,7 +121,7 @@ export class ReportPage {
         setTimeout(() => {
           console.log('to initialize')
           this.initializeCharts();
-        }, 1000)
+        }, 500)
       }
     }
   }
@@ -172,5 +178,25 @@ export class ReportPage {
     })
   }
 
+  newMember() {
+    this.navCtrl.push('CreateMemberPage', {}, { animate: true, direction: 'forward' });
+  }
 
+  newEntry() {
+    if (this.gv.members.length < 2) {
+      this.translate.get('HOME.MEMBER_FIRST')
+        .subscribe(vals => {
+          let toast = this.toastCtrl.create({
+            position: 'bottom',
+            duration: 2000,
+            message: vals
+          });
+          toast.present();
+        })
+    } else {
+      this.navCtrl.push('NewentryPage', {}, { animate: true, direction: 'forward' });
+    }
+  }
+
+  
 }

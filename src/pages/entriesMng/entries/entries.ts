@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Refresher, Content, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Refresher, Content, ToastController, Events } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { Loading } from 'ionic-angular/components/loading/loading';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { BackendProvider } from '../../../providers/backend/backend';
 import { GvProvider } from '../../../providers/gv/gv';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the EntriesPage page.
@@ -29,10 +30,14 @@ export class EntriesPage {
     private alertCtrl: AlertController,
     private gv: GvProvider,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private translate:TranslateService,
+    private events:Events
   ) {
     this.pageNumber = 0;
     this.endOfList = false;
+
+   
 
   }
 
@@ -56,7 +61,19 @@ export class EntriesPage {
   }
 
   newEntry() {
-    this.navCtrl.push('NewentryPage');
+    if (this.gv.members.length < 2) {
+      this.translate.get('HOME.MEMBER_FIRST')
+        .subscribe(vals => {
+          let toast = this.toastCtrl.create({
+            position: 'bottom',
+            duration: 2000,
+            message: vals
+          });
+          toast.present();
+        })
+    } else {
+      this.navCtrl.push('NewentryPage');
+    }
   }
 
 
@@ -140,7 +157,7 @@ export class EntriesPage {
 
   }
 
-  openSettings(){
+  openSettings() {
     this.navCtrl.push('SettingsPage');
   }
 

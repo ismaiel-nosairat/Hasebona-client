@@ -1,0 +1,31 @@
+<!--
+  Generated template for the OfflinePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content padding class="mainPage">
+
+  <div class="container" text-center>
+    <img class="offlineImage" src="../assets/imgs/offline.png" />
+
+    <label class="myLabel">
+      {{'OFFLINE.MESSAGE' | translate}}
+    </label>
+    <br />
+    <button ion-button class="refreshBtn" (click)="refreshCall()" [disabled]="isRefreshing">
+      <span *ngIf="!isRefreshing">
+        {{'OFFLINE.REFRESH' | translate}}
+      </span>
+      <span *ngIf="isRefreshing">
+        {{'OFFLINE.REFRESHING' | translate}}
+      </span>
+    </button>
+
+  </div>
+
+
+
+</ion-content>

@@ -22,7 +22,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 export class WelcomePage {
 
   constructor(public navCtrl: NavController, private backend: BackendProvider, private gv: GvProvider, private toastCtrl: ToastController, private googlePlus: GooglePlus, private statusBar: StatusBar) {
-    this.statusBar.overlaysWebView(true);
+    // this.statusBar.overlaysWebView(true);
     this.statusBar.backgroundColorByHexString('#99938f');
 
   }

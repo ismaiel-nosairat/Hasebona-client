@@ -1,15 +1,9 @@
 {
   "WELCOME": {
-    "TITLE": "Welcome To Hasebona App",
-    "TEXT1": "Hasebona",
-    "TEXT2": "Discover some intersting things",
-    "YOU_CAN": "You can start by",
-    "OR_YOU_CAN": "Or you can",
-    "YOU_CAN_USE_GOOGLE": "Or you can login with Google",
-    "SIGNUP": "Sign Up",
-    "SIGNIN": "Login",
-    "GOOGLE_LOGIN": "Google+",
-    "MOCKLOGIN": "Mock Login"
+    "TEXT1": "Smart, Easy & Secure Accounting For All",
+    "TEXT2": "Use your Google Account to login ",
+    "TEXT3": "By Continuing, I accept the HASEBONA Term of Service",
+    "SIGNIN": "GET STARTED"
   },
   "TABS": {
     "HOME": "Home",
@@ -24,7 +18,12 @@
     "REFRESHING_TEXT": "Refreshing...",
     "CREDITORS": "Creditors",
     "DEBTORS": "Debtors",
-    "TEXT": ""
+    "TEXT1": "Here you can show full report about all members in this sheet",
+    "TEXT2": "Begin using the application by adding a new Member",
+    "TEXT3": "Then you can Add new Entry",
+    "NEW_MEMBER": "New Member",
+    "NEW_ENTRY": "New Entry",
+    "MEMBER_FIRST": "Please enter a member first!"
   },
   "MEMBERS": {
     "TITLE": "Members"
@@ -93,7 +92,8 @@
       "MIN_LENGTH": "Minimum length is",
       "MAX_LENGTH": "Maximum length is",
       "CHARACTERS": "characters",
-      "INVALID_VALUE": "Invalid value"
+      "INVALID_VALUE": "Invalid value",
+      "CREDITOR_IS_DEBETOR": "You must select another member too!"
     }
   },
   "CREATE": {
@@ -166,7 +166,12 @@
       "EMAIL_IS_MANDATORY": "Please enter an Email !"
     }
   },
-  "SHEET_LIST":{
-    "TITLE":"My Sheets"
+  "SHEET_LIST": {
+    "TITLE": "My Sheets"
+  },
+  "OFFLINE": {
+    "MESSAGE": "No Connection, Please Rety again",
+    "REFRESH": "Refresh",
+    "REFRESHING": "Refreshing..."
   }
 }

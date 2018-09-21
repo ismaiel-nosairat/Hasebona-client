@@ -16,7 +16,19 @@ export class BackendProvider {
 
   constructor(public http: HttpClient, private api: Api, private gv: GvProvider, private storage: Storage, private events: Events) {
     console.log('Hello BackendProvider Provider');
-
+    this.registedEvents();
+  }
+  registedEvents() {
+    this.events.subscribe(this.gv.EVENTS.TO_REFRESH_SHEET_LIST, () => {
+      this.Sheet_loadList().then(res => {
+        this.events.publish(this.gv.EVENTS.GO_TO_SHEET_LIST);
+      })
+    })
+    this.events.subscribe(this.gv.EVENTS.TO_LOGOUT, () => {
+      this.logout().then(res => {
+        this.events.publish(this.gv.EVENTS.LOGOUT);
+      })
+    })
   }
 
 
@@ -50,14 +62,19 @@ export class BackendProvider {
             //todo
           }
           this.gv.token = output.token;
-          this.storage.set(this.gv.GC.TOKEN, output.token).then(storageRes => {
-            this.api.makeRequest(this.endpoints.Sheets_list).then(listRes => {
-              let listOutput: SheetListItem[] = listRes as SheetListItem[];
-              this.gv.userSheets = listOutput;
-              this.api.prepareSheetList(this.gv.userSheets);
-              resolve();
-            })
+          this.gv.userEmail = loginDto.email;
+
+          this.storage.set(this.gv.GC.USER_EMAIL, loginDto.email).then(r => {
+            this.storage.set(this.gv.GC.TOKEN, output.token).then(storageRes => {
+              this.api.makeRequest(this.endpoints.Sheets_list).then(listRes => {
+                let listOutput: SheetListItem[] = listRes as SheetListItem[];
+                this.gv.userSheets = listOutput;
+                this.api.prepareSheetList(this.gv.userSheets);
+                resolve();
+              })
+            });
           });
+
         }
       );
     })
@@ -234,7 +251,7 @@ export class BackendProvider {
       this.gv.entires = [];
       this.gv.sheetId = null;
       this.gv.token = null;
-
+      this.gv.userEmail = null;
       this.gv.sheet = null
       this.gv.members = [];
       this.gv.entires = [];
@@ -253,6 +270,17 @@ export class BackendProvider {
     })
   }
 
+
+  testConnection(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.api.makeRequest(this.endpoints.Sheets_test).then(result => {
+        resolve('ONLINE');
+      }).catch(err =>
+        resolve('OFFLINE')
+      )
+    })
+  }
+
   endpoints = {
     Users_Login: '/user/login',
     Users_addPermission: '/user/addPermission',
@@ -262,6 +290,7 @@ export class BackendProvider {
     Sheets_view: '/sheet/view',
     Sheets_create: '/sheet/add',
     Sheets_report: '/sheet/report',
+    Sheets_test: '/sheet/test',
 
     Members_list: '/member/list',
     Members_add: '/member/add',

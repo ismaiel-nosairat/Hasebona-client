@@ -44,12 +44,16 @@ page-memberbalance {
         padding-left: 0px !important;
      } 
      .memberInfo{
-         background-color: #0377bb;
+         background-color:color($colors,special);
      }
      .myTable{
-        background-color: #0377bb;
+        background-color:color($colors,special);
      }
-
+     .rowName{
+         padding-top: 2px;
+         padding-bottom: 2px;
+         height: 29px;
+     }
      ion-col{
          background-color: white;
          opacity: 0.9;
@@ -71,7 +75,10 @@ page-memberbalance {
         text-align: center;
      }
 
-
+     img {
+        background: url('../assets/imgs/profile.png') no-repeat;
+        background-size: cover;
+      }
 
      #loading {
         display: inline-block;

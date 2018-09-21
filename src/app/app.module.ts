@@ -79,8 +79,8 @@ firebase.initializeApp(firebaseConfig);
     StatusBar,
     Keyboard,
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    // { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    // { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
     GvProvider,
     BackendProvider,
     GooglePlus

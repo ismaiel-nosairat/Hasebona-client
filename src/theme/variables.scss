@@ -34,6 +34,7 @@ $colors: (
   color2: rgb(77, 180, 77),
   color3:#66ff66,
   myGreen:#1aad5c,
+  main:#0377bb,
   1: #0377bb,
   2: #AC282B,
   3: #8E8D93,
@@ -43,11 +44,12 @@ $colors: (
   7: #3BC7C4,
   8: #B16BE3,
   9: #6600CC,
+  special:#1c8adb,
   blade: rgb(219, 219, 219),
 );
-$toolbar-md-background: color($colors,secondary);
+$toolbar-md-background: color($colors,special);
 
-$tabs-md-background: color($colors,secondary);
+$tabs-md-background: color($colors,special);
 $tabs-md-tab-color: color($colors,light);
 $tabs-md-tab-color-active: color($colors,light);
 $tabs-md-tab-text-color: color($colors,light);

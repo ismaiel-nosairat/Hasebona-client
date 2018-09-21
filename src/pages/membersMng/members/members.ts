@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { BackendProvider } from '../../../providers/backend/backend';
 import { AlertController, LoadingController, Loading } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -28,24 +28,22 @@ export class MembersPage {
     private loadingCtrl: LoadingController,
     private translateService: TranslateService,
     private gv: GvProvider,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private events: Events
   ) {
     console.log('Hello Members');
-
-
   }
-
-  showMemberDetails(member) {
-    this.navCtrl.push('MemberbalancePage', { member: member });
-  }
-
-
 
 
   addMember() {
     this.navCtrl.push('CreateMemberPage');
   }
-
+  showMemberDetails(member) {
+    this.navCtrl.push('MemberbalancePage', { member: member }, {
+      animate: true,
+      direction: 'forward'
+    });
+  }
 
   showLoading() {
     this.translate.get('COMMON.LOADING').subscribe(val => {
@@ -57,6 +55,9 @@ export class MembersPage {
     })
 
   }
+  openSettings() {
+    this.navCtrl.push('SettingsPage');
+  }
 
- 
+
 }

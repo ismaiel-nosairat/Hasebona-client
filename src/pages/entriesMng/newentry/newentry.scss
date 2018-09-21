@@ -8,6 +8,11 @@ page-newentry {
         -moz-box-shadow: 0 10px 6px -6px #777;
         box-shadow: 0 10px 6px -6px #777;
     }
+    
+    .select-text{
+        margin-left: 15px;
+        margin-right: 5px;
+    }
     .error-box{
         color: red;
         //padding-top: 2px;
@@ -17,7 +22,7 @@ page-newentry {
         border: 1px solid #ea6153;
     }
     .debetorLabel{
-       
+        height: 29px;
     }
     .checkIcon{
         zoom: 2;

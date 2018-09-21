@@ -25,8 +25,8 @@ export class SheetListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private gv: GvProvider, private backend: BackendProvider, private storage: Storage, private app: App, private events: Events, private statusBar: StatusBar) {
 
     console.log('Hello SheetList');
-    this.statusBar.overlaysWebView(true);
-    this.statusBar.backgroundColorByHexString('#0377bb');
+    this.statusBar.backgroundColorByHexString('#1c8adb');
+
   }
 
   ionViewDidLoad() {

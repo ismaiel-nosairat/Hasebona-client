@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, VirtualScroll, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, VirtualScroll, ToastController, Events } from 'ionic-angular';
 import { BackendProvider } from '../../../providers/backend/backend';
 import { Loading } from 'ionic-angular/components/loading/loading';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
-import { ListMemberItem, ViewMemberOut } from '../../../models/dtos';
+import { ListMemberItem, ViewMemberOut,ViewEntryOut } from '../../../models/dtos';
 import { GvProvider } from '../../../providers/gv/gv';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -29,10 +29,10 @@ export class MemberbalancePage {
   report: ViewMemberOut;
   summary: any;
   loaded: boolean = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private backend: BackendProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private gv: GvProvider, private translate: TranslateService, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private backend: BackendProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private gv: GvProvider, private translate: TranslateService, private toastCtrl: ToastController,private events:Events) {
     this.loaded = false;
     this.member = navParams.get("member");
-    // setTimeout(2000, () => {
+    
     this.backend.Members_View(this.member.id).then(
       val => {
         console.log('in');
@@ -60,10 +60,6 @@ export class MemberbalancePage {
         this.showError(err);
       }
     );
-
-
-
-    // })
 
 
   }
@@ -96,8 +92,8 @@ export class MemberbalancePage {
 
   entryDetails(item) {
     let entryId = item.id ;
-    let entry: any;
-    entry=this.gv.entires.filter(e=>e.id==entryId);
+    let entry: ViewEntryOut;
+    entry=this.gv.entires.find(e=>e.id==entryId);
     this.navCtrl.push('EntrydetailsPage', { entry: entry }, { animate: true, direction: 'forward' });
   }
 

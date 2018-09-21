@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Loading, LoadingController, Events } from 'ionic-angular';
 import { AddMemberIn, FoundUser, PermissionItem } from '../../../models/dtos';
 import { BackendProvider } from '../../../providers/backend/backend';
 import { TranslateService } from '@ngx-translate/core';
 import { GvProvider } from '../../../providers/gv/gv';
-import { Keyboard } from '@ionic-native/keyboard';
+
 
 /**
  * Generated class for the CreateMemberPage page.
@@ -18,7 +18,7 @@ import { Keyboard } from '@ionic-native/keyboard';
   selector: 'page-create-member',
   templateUrl: 'create-member.html',
 })
- declare const Keyboard: any;
+
 
 export class CreateMemberPage {
 
@@ -32,16 +32,19 @@ export class CreateMemberPage {
   nameError: string;
   segmentValue: string = "member";
   isSelected = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private backend: BackendProvider, private translate: TranslateService, private loadingCtrl: LoadingController, private gv: GvProvider, private keyboard: Keyboard) {
-    keyboard.disableScroll(true);
-    Keyboard.hideFormAccessoryBar(false);
+  constructor(public navCtrl: NavController, public navParams: NavParams, private backend: BackendProvider, private translate: TranslateService, private loadingCtrl: LoadingController, private gv: GvProvider,private events:Events) {
+   
   }
 
   ionViewDidLoad() {
   }
 
+  toggleIsSelected() {
+    this.isSelected=this.isSelected==true?false:true;
+  }
 
   findUser() {
+    this.prepareEmail();
     this.found = null;
     if (this.userEmail) {
       console.log(this.userEmail);
@@ -131,6 +134,7 @@ export class CreateMemberPage {
   }
 
   saveUserMember() {
+    this.prepareEmail();
     this.addMemberDto.userId = this.found.id;
     this.addMemberDto.name = this.found.firstName;
     this.showLoading();
@@ -149,5 +153,10 @@ export class CreateMemberPage {
       this.loading.present();
     })
 
+  }
+
+  prepareEmail() {
+    this.userEmail = this.userEmail.trim();
+    this.userEmail = this.userEmail.toLowerCase();
   }
 }

@@ -79,10 +79,10 @@
           <img [src]="item.imageUrl">
         </ion-avatar>
         <h2>{{item.firstName}}</h2>
-        <h3>{{item.email}}</h3>
+        <h3 class="userEmail">{{item.email}}</h3>
         <ion-badge item-end>{{item.permissionTranslated}}</ion-badge>
         <ion-icon name="md-close-circle" [hidden]="item.permissionType!==3" style="color:transparent" icon-left item-end></ion-icon>
-        <button ion-button round color="danger" (click)="deletePermission(item)" item-end [disabled]="item.permission=='OWNER'" class="removePermissionBtn">
+        <button ion-button round color="danger" (click)="deletePermission(item)" item-end  [disabled]=" item.permission=='OWNER' || !gv.hasFullPermission()" class="removePermissionBtn"  >
           <ion-icon name="md-close"></ion-icon>
         </button>
       </ion-item>
