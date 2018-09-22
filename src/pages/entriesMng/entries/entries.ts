@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Refresher, Content, ToastController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Refresher, Content, ToastController, Events, App } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { Loading } from 'ionic-angular/components/loading/loading';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
@@ -32,7 +32,8 @@ export class EntriesPage {
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private translate:TranslateService,
-    private events:Events
+    private events:Events, public appCtrl: App
+    
   ) {
     this.pageNumber = 0;
     this.endOfList = false;
@@ -57,7 +58,8 @@ export class EntriesPage {
   }
 
   showEntry(item) {
-    this.navCtrl.push('EntrydetailsPage', { entry: item }, { animate: true, direction: 'forward' });
+    this.appCtrl.getRootNav().push('EntrydetailsPage', { entry: item }, { animate: true, direction: 'forward' });
+    //this.navCtrl.push('EntrydetailsPage', { entry: item }, { animate: true, direction: 'forward' });
   }
 
   newEntry() {
@@ -72,7 +74,8 @@ export class EntriesPage {
           toast.present();
         })
     } else {
-      this.navCtrl.push('NewentryPage');
+      this.appCtrl.getRootNav().push('NewentryPage');
+      //this.navCtrl.push('NewentryPage');
     }
   }
 
@@ -158,7 +161,7 @@ export class EntriesPage {
   }
 
   openSettings() {
-    this.navCtrl.push('SettingsPage');
+    this.appCtrl.getRootNav().push('SettingsPage');
   }
 
 }

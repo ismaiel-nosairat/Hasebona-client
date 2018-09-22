@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, App } from 'ionic-angular';
 import { BackendProvider } from '../../../providers/backend/backend';
 import { AlertController, LoadingController, Loading } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -30,16 +30,19 @@ export class MembersPage {
     private gv: GvProvider,
     private translate: TranslateService,
     private events: Events
+    , public appCtrl: App
   ) {
     console.log('Hello Members');
   }
 
 
   addMember() {
-    this.navCtrl.push('CreateMemberPage');
+    this.appCtrl.getRootNav().push('CreateMemberPage', {}, { animate: true });
+    //this.navCtrl.push('CreateMemberPage');
   }
   showMemberDetails(member) {
-    this.navCtrl.push('MemberbalancePage', { member: member }, {
+    //this.navCtrl.push
+    this.appCtrl.getRootNav().push('MemberbalancePage', { member: member }, {
       animate: true,
       direction: 'forward'
     });
@@ -56,7 +59,8 @@ export class MembersPage {
 
   }
   openSettings() {
-    this.navCtrl.push('SettingsPage');
+    this.appCtrl.getRootNav().push('SettingsPage');
+    //this.navCtrl.push('SettingsPage');
   }
 
 

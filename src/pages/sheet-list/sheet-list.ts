@@ -34,7 +34,8 @@ export class SheetListPage {
   }
 
   newSheet() {
-    this.navCtrl.push('CreateSheetPage');
+    this.app.getRootNav().push('CreateSheetPage');
+    //this.navCtrl.push('CreateSheetPage');
   }
 
   showSheet(sheetId) {

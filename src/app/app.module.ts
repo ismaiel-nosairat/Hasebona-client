@@ -18,7 +18,7 @@ import { GlobalErrorHandler } from './global-error-handler';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { AngularFireModule } from 'angularfire2';
 import firebase from 'firebase';
-
+import { SuperTabsModule } from 'ionic2-super-tabs';
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -50,6 +50,7 @@ firebase.initializeApp(firebaseConfig);
   imports: [
     BrowserModule,
     HttpClientModule,
+    SuperTabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

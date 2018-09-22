@@ -6,7 +6,7 @@
 -->
 <ion-header no-border>
 
-  <ion-navbar>
+  <ion-navbar dir="rtl">
     <ion-title> {{'MEMBER_BALANCE.TITLE' |translate }}</ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click)="deleteMember()" [disabled]="!gv.hasFullPermission()" >
@@ -18,7 +18,7 @@
 </ion-header>
 
 
-<ion-content no-padding style="text-align: center;">
+<ion-content no-padding style="text-align: center;" dir="rtl">
   <div class="myTable">
     <ion-item style="background-color:transparent">
       <ion-avatar item-start>

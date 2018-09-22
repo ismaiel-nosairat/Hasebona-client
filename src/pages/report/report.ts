@@ -198,5 +198,7 @@ export class ReportPage {
     }
   }
 
-  
+  openSettings() {
+    this.navCtrl.push('SettingsPage');
+  }
 }

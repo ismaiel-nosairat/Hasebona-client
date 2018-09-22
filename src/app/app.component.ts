@@ -6,6 +6,7 @@ import { Config, Nav, Platform, Events } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages';
 import { Storage } from '@ionic/storage';
+import { GvProvider } from '../providers/gv/gv';
 
 @Component({
   template: `
@@ -39,7 +40,7 @@ export class MyApp {
 
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, private events: Events, private statusBar: StatusBar, private splashScreen: SplashScreen, private storage: Storage) {
+  constructor(private translate: TranslateService, platform: Platform, private events: Events, private statusBar: StatusBar, private splashScreen: SplashScreen, private storage: Storage,private gv:GvProvider) {
     platform.ready().then(() => {
       
       this.registerEvents();
@@ -49,13 +50,14 @@ export class MyApp {
         console.log('lan changed', event.lang);
 
         if (event.lang == 'ar') {
-
           platform.setDir('rtl', true);
           platform.setDir('ltr', false);
+          this.gv.appDir='rtl';
         }
         else {
           platform.setDir('ltr', true);
           platform.setDir('rtl', false);
+          this.gv.appDir='ltr';
         }
         events.publish('lang:change')
       });

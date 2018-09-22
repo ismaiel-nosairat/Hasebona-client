@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
 import { Tab1Root, Tab2Root, Tab3Root, Tab4Root } from '../';
 import { StatusBar } from '@ionic-native/status-bar';
+import { SuperTabsController } from 'ionic2-super-tabs';
 
 @IonicPage()
 @Component({
@@ -22,7 +23,7 @@ export class TabsPage {
   tab4Title = " ";
 
   seltabix: number = 0;
-  constructor(public navCtrl: NavController, private navParam: NavParams, public translateService: TranslateService, private events: Events,private statusBar: StatusBar) {
+  constructor(public navCtrl: NavController, private navParam: NavParams, public translateService: TranslateService, private events: Events, private statusBar: StatusBar, private superTabsCtrl: SuperTabsController) {
     // this.statusBar.overlaysWebView(true);
     this.statusBar.backgroundColorByHexString('#1c8adb');
 
@@ -40,5 +41,16 @@ export class TabsPage {
         this.tab4Title = values['TABS.All_SHEETS'];
       });
     })
+  }
+  hideToolbar() {
+    this.superTabsCtrl.showToolbar(false);
+  }
+
+  showToolbar() {
+    this.superTabsCtrl.showToolbar(true);
+  }
+
+  onTabSelect(ev: any) {
+    console.log('Tab selected', 'Index: ' + ev.index, 'Unique ID: ' + ev.id);
   }
 }

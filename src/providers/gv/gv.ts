@@ -77,4 +77,6 @@ export class GvProvider {
     GO_OFFLINE: 'GO_OFFLINE',
     FORCE_OFFLINE: 'FORCE_OFFLINE'
   }
+
+  appDir:string;
 }
